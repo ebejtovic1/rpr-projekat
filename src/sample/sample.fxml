@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
+
+<GridPane alignment="center" hgap="10" prefHeight="425.0" prefWidth="716.0" vgap="10" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller">
+   <columnConstraints>
+      <ColumnConstraints />
+      <ColumnConstraints />
+   </columnConstraints>
+   <rowConstraints>
+      <RowConstraints />
+      <RowConstraints />
+   </rowConstraints>
+   <children>
+      <TableView fx:id="table" prefHeight="245.0" prefWidth="697.0">
+        <columns>
+          <TableColumn fx:id="id" prefWidth="66.0" text="ID" />
+          <TableColumn fx:id="title" prefWidth="84.0" text="Title" />
+            <TableColumn fx:id="author" prefWidth="75.0" text="Author" />
+            <TableColumn fx:id="field" prefWidth="93.0" text="Field of study" />
+            <TableColumn fx:id="journal" prefWidth="57.0" text="Journal" />
+            <TableColumn fx:id="type" prefWidth="75.0" text="Publication Type" />
+            <TableColumn fx:id="year" prefWidth="75.0" text="Year of issue" />
+            <TableColumn fx:id="citations" prefWidth="75.0" text="Citations" />
+            <TableColumn fx:id="affiliation" prefWidth="75.0" text="Affiliation" />
+        </columns>
+      </TableView>
+   </children>
+</GridPane>

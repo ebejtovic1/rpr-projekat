@@ -1,33 +1,70 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.RowConstraints?>
 
-<GridPane alignment="center" hgap="10" prefHeight="425.0" prefWidth="716.0" vgap="10" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller">
+<GridPane alignment="center" prefHeight="400.0" prefWidth="1550.0" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller">
    <columnConstraints>
-      <ColumnConstraints />
-      <ColumnConstraints />
+      <ColumnConstraints maxWidth="1521.0" minWidth="1521.0" prefWidth="1521.0" />
+      <ColumnConstraints maxWidth="0.0" minWidth="0.0" prefWidth="0.0" />
    </columnConstraints>
    <rowConstraints>
-      <RowConstraints />
-      <RowConstraints />
+      <RowConstraints maxHeight="38.0" minHeight="0.0" prefHeight="38.0" />
+      <RowConstraints maxHeight="318.0" minHeight="280.0" prefHeight="280.0" />
+      <RowConstraints maxHeight="318.0" minHeight="3.0" prefHeight="55.0" />
    </rowConstraints>
    <children>
-      <TableView fx:id="table" prefHeight="245.0" prefWidth="697.0">
+      <TableView fx:id="table" editable="true" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="286.0" prefWidth="1540.0" GridPane.halignment="CENTER" GridPane.hgrow="NEVER" GridPane.rowIndex="1" GridPane.valignment="CENTER" GridPane.vgrow="NEVER">
         <columns>
-          <TableColumn fx:id="id" prefWidth="66.0" text="ID" />
-          <TableColumn fx:id="title" prefWidth="84.0" text="Title" />
-            <TableColumn fx:id="author" prefWidth="75.0" text="Author" />
-            <TableColumn fx:id="field" prefWidth="93.0" text="Field of study" />
-            <TableColumn fx:id="journal" prefWidth="57.0" text="Journal" />
-            <TableColumn fx:id="type" prefWidth="75.0" text="Publication Type" />
-            <TableColumn fx:id="year" prefWidth="75.0" text="Year of issue" />
-            <TableColumn fx:id="citations" prefWidth="75.0" text="Citations" />
-            <TableColumn fx:id="affiliation" prefWidth="75.0" text="Affiliation" />
+          <TableColumn fx:id="id" prefWidth="30.000015258789062" text="ID" />
+          <TableColumn fx:id="title" prefWidth="436.99999618530273" text="Title" />
+            <TableColumn fx:id="author" prefWidth="205.00001525878906" text="Author" />
+            <TableColumn fx:id="field" prefWidth="103.0" text="Field of study" />
+            <TableColumn fx:id="journal" prefWidth="234.0" text="Journal" />
+            <TableColumn fx:id="type" prefWidth="126.0" text="Publication Type" />
+            <TableColumn fx:id="year" prefWidth="97.0" text="Year of issue" />
+            <TableColumn fx:id="citations" prefWidth="69.0" text="Citations" />
+            <TableColumn fx:id="affiliation" prefWidth="217.0" resizable="false" text="Affiliation" />
         </columns>
+         <GridPane.margin>
+            <Insets />
+         </GridPane.margin>
       </TableView>
+      <MenuBar prefHeight="32.0" prefWidth="1300.0">
+        <menus>
+          <Menu mnemonicParsing="false" text="File">
+            <items>
+              <MenuItem mnemonicParsing="false" text="Close" />
+            </items>
+          </Menu>
+          <Menu mnemonicParsing="false" text="Edit">
+            <items>
+              <MenuItem mnemonicParsing="false" text="Delete" />
+            </items>
+          </Menu>
+          <Menu mnemonicParsing="false" text="Help">
+            <items>
+              <MenuItem mnemonicParsing="false" text="About" />
+            </items>
+          </Menu>
+        </menus>
+      </MenuBar>
+      <ChoiceBox fx:id="choiceBox" prefHeight="31.0" prefWidth="150.0" GridPane.halignment="CENTER" GridPane.rowIndex="2">
+         <GridPane.margin>
+            <Insets right="780.0" />
+         </GridPane.margin></ChoiceBox>
+      <TextField fx:id="textField" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="31.0" prefWidth="282.0" GridPane.rowIndex="2">
+         <GridPane.margin>
+            <Insets />
+         </GridPane.margin></TextField>
    </children>
 </GridPane>

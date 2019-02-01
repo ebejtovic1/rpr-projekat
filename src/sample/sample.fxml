@@ -41,17 +41,25 @@
       </TableView>
       <MenuBar prefHeight="32.0" prefWidth="1300.0">
         <menus>
-          <Menu mnemonicParsing="false" text="File">
+          <Menu mnemonicParsing="false" text="_File">
             <items>
-              <MenuItem mnemonicParsing="false" text="Close" />
+                  <MenuItem fx:id="printBtn" mnemonicParsing="false" onAction="#print" text="_Print" />
+              <MenuItem mnemonicParsing="false" onAction="#exit" text="_Close" />
             </items>
           </Menu>
-          <Menu mnemonicParsing="false" text="Edit">
+          <Menu mnemonicParsing="false" text="_Edit">
             <items>
+                  <Menu mnemonicParsing="false" text="Add">
+                    <items>
+                      <MenuItem mnemonicParsing="false" onAction="#addS" text="Scientific work" />
+                        <MenuItem mnemonicParsing="false" onAction="#addP" text="Publication type" />
+                        <MenuItem mnemonicParsing="false" onAction="#addF" text="Field of study" />
+                    </items>
+                  </Menu>
               <MenuItem mnemonicParsing="false" text="Delete" />
             </items>
           </Menu>
-          <Menu mnemonicParsing="false" text="Help">
+          <Menu mnemonicParsing="false" text="_Help">
             <items>
               <MenuItem mnemonicParsing="false" text="About" />
             </items>

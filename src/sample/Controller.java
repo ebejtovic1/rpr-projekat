@@ -13,6 +13,7 @@ import javafx.print.*;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.transform.Scale;
 import javafx.stage.Stage;
@@ -38,6 +39,9 @@ public class Controller {
     public TableColumn<ScientificWork, SimpleStringProperty> affiliation;
     public ChoiceBox<String> choiceBox;
     public  TextField textField;
+    public  TextField textField1;
+    public  TextField textField2;
+    public BorderPane hbox;
 
     @FXML
     private void initialize() {
@@ -177,25 +181,15 @@ public class Controller {
     }
 
     public void addF(ActionEvent actionEvent){
-        FXMLLoader loader1 = new FXMLLoader(getClass().getResource("AddFieldOfStudy.fxml"));
-        Stage stage = new Stage(StageStyle.DECORATED);
-        try { stage.setScene(new Scene((Pane) loader1.load())
-        );
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        stage.show();
+        ScientificWorksDAO dao=ScientificWorksDAO.getInstance();
+        dao.addFieldS(textField2.getText());
+        textField2.clear();
     }
 
     public void addP(ActionEvent actionEvent){
-        FXMLLoader loader1 = new FXMLLoader(getClass().getResource("AddPublicationType.fxml"));
-        Stage stage = new Stage(StageStyle.DECORATED);
-        try { stage.setScene(new Scene((Pane) loader1.load())
-        );
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        stage.show();
+        ScientificWorksDAO dao=ScientificWorksDAO.getInstance();
+        dao.addTypeP(textField1.getText());
+        textField1.clear();
     }
 
     public void delete (ActionEvent actionEvent)throws NoSelectedExeption {
@@ -225,9 +219,19 @@ public class Controller {
         } catch (IOException e) {
             e.printStackTrace();
         }
+        if(table.getSelectionModel().getSelectedItem()==null){
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Error");
+            alert.setHeaderText("No selected item");
+            Optional<ButtonType> action= alert.showAndWait();
+            if(action.get()== ButtonType.OK){
+                alert.close();
+            }
+            return;
+        }
         stage.show();
         AddScientificWorkController ctrl = loader1.getController();
-        try {
+
             ctrl.setId(table.getSelectionModel().getSelectedItem().getId());
 
             ctrl.getTitle().textProperty().bindBidirectional(new SimpleStringProperty(table.getSelectionModel().getSelectedItem().getTitle()));
@@ -255,15 +259,4 @@ public class Controller {
                 }
             });
         }
-        catch (Exception e){
-            Alert alert = new Alert(Alert.AlertType.ERROR);
-            alert.setTitle("Error");
-            alert.setHeaderText("No selected item");
-            Optional<ButtonType> action= alert.showAndWait();
-            if(action.get()== ButtonType.OK){
-                alert.close();
-            }
-            return;
-        }
-    }
 }

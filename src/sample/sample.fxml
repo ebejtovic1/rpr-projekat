@@ -1,20 +1,31 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.net.URL?>
 <?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.Label?>
 <?import javafx.scene.control.Menu?>
 <?import javafx.scene.control.MenuBar?>
 <?import javafx.scene.control.MenuItem?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.text.Font?>
 
-<GridPane alignment="center" prefHeight="500.0" prefWidth="1549.0" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller">
-   <columnConstraints>
-      <ColumnConstraints maxWidth="1521.0" minWidth="1521.0" prefWidth="1521.0" />
+<GridPane alignment="center" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="510.0" prefWidth="1520.0" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller">
+    <stylesheets>
+        <URL value="@e.css" />
+    </stylesheets>
+
+    <columnConstraints>
+      <ColumnConstraints maxWidth="-Infinity" minWidth="-Infinity" prefWidth="1230.0" />
+      <ColumnConstraints maxWidth="-Infinity" minWidth="-Infinity" prefWidth="330.0" />
+      <ColumnConstraints maxWidth="-Infinity" minWidth="-Infinity" />
       <ColumnConstraints maxWidth="0.0" minWidth="0.0" prefWidth="0.0" />
    </columnConstraints>
    <rowConstraints>
@@ -23,23 +34,23 @@
       <RowConstraints maxHeight="318.0" minHeight="3.0" prefHeight="55.0" />
    </rowConstraints>
    <children>
-      <TableView fx:id="table" editable="true" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" prefHeight="450.0" prefWidth="1521.0" GridPane.halignment="CENTER" GridPane.hgrow="NEVER" GridPane.rowIndex="1" GridPane.valignment="CENTER" GridPane.vgrow="NEVER">
+      <TableView fx:id="table" editable="true" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" prefHeight="446.0" prefWidth="1216.0" GridPane.halignment="CENTER" GridPane.hgrow="NEVER" GridPane.rowIndex="1" GridPane.valignment="CENTER" GridPane.vgrow="NEVER">
         <columns>
           <TableColumn fx:id="id" prefWidth="30.000015258789062" text="ID" />
-          <TableColumn fx:id="title" prefWidth="436.99999618530273" text="Title" />
-            <TableColumn fx:id="author" prefWidth="205.00001525878906" text="Author" />
-            <TableColumn fx:id="field" prefWidth="103.0" text="Field of study" />
-            <TableColumn fx:id="journal" prefWidth="234.0" text="Journal" />
-            <TableColumn fx:id="type" prefWidth="126.0" text="Publication Type" />
-            <TableColumn fx:id="year" prefWidth="97.0" text="Year of issue" />
-            <TableColumn fx:id="citations" prefWidth="69.0" text="Citations" />
-            <TableColumn fx:id="affiliation" prefWidth="217.0" resizable="false" text="Affiliation" />
+          <TableColumn fx:id="title" prefWidth="266.9999694824219" text="Title" />
+            <TableColumn fx:id="author" prefWidth="204.0" text="Author" />
+            <TableColumn fx:id="field" prefWidth="106.0" text="Field of study" />
+            <TableColumn fx:id="journal" prefWidth="143.0" text="Journal" />
+            <TableColumn fx:id="type" prefWidth="123.0" text="Publication Type" />
+            <TableColumn fx:id="year" prefWidth="89.0" text="Year of issue" />
+            <TableColumn fx:id="citations" prefWidth="62.0" text="Citations" />
+            <TableColumn fx:id="affiliation" prefWidth="190.0" resizable="false" text="Affiliation" />
         </columns>
          <GridPane.margin>
-            <Insets bottom="150.0" />
+            <Insets bottom="150.0" left="20.0" />
          </GridPane.margin>
       </TableView>
-      <MenuBar prefHeight="32.0" prefWidth="1300.0">
+      <MenuBar prefHeight="32.0" prefWidth="1300.0" GridPane.columnSpan="2">
         <menus>
           <Menu mnemonicParsing="false" text="_File">
             <items>
@@ -49,13 +60,7 @@
           </Menu>
           <Menu mnemonicParsing="false" text="_Edit">
             <items>
-                  <Menu mnemonicParsing="false" text="Add">
-                    <items>
-                      <MenuItem mnemonicParsing="false" onAction="#addS" text="Scientific work" />
-                        <MenuItem mnemonicParsing="false" onAction="#addP" text="Publication type" />
-                        <MenuItem mnemonicParsing="false" onAction="#addF" text="Field of study" />
-                    </items>
-                  </Menu>
+                <MenuItem mnemonicParsing="false" onAction="#addS" text="Add" />
               <MenuItem mnemonicParsing="false" onAction="#delete" text="Delete" />
                   <MenuItem mnemonicParsing="false" onAction="#update" text="Update" />
             </items>
@@ -67,16 +72,135 @@
           </Menu>
         </menus>
          <GridPane.margin>
-            <Insets bottom="300.0" />
+            <Insets bottom="300.0" left="5.0" />
          </GridPane.margin>
       </MenuBar>
       <ChoiceBox fx:id="choiceBox" prefHeight="31.0" prefWidth="150.0" GridPane.halignment="CENTER" GridPane.rowIndex="2">
          <GridPane.margin>
-            <Insets right="780.0" />
+            <Insets right="200.0" />
          </GridPane.margin></ChoiceBox>
-      <TextField fx:id="textField" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="31.0" prefWidth="282.0" GridPane.rowIndex="2">
+      <TextField fx:id="textField" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="31.0" prefWidth="411.0" GridPane.rowIndex="2">
          <GridPane.margin>
-            <Insets />
+            <Insets left="20.0" />
          </GridPane.margin></TextField>
+      <BorderPane fx:id="hbox" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="128.0" prefWidth="305.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
+         <center>
+            <TextField fx:id="textField2" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" prefHeight="35.0" prefWidth="234.0" BorderPane.alignment="CENTER">
+               <BorderPane.margin>
+                  <Insets bottom="15.0" />
+               </BorderPane.margin></TextField>
+         </center>
+         <top>
+            <Label maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="31.0" prefWidth="160.0" text="Add new field of study" BorderPane.alignment="CENTER">
+
+               <padding>
+                  <Insets bottom="32.0" />
+               </padding>
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font>
+               <BorderPane.margin>
+                  <Insets top="10.0" />
+               </BorderPane.margin>
+            </Label>
+         </top>
+         <GridPane.margin>
+            <Insets bottom="470.0" left="5.0" right="5.0" />
+         </GridPane.margin>
+         <bottom>
+            <Button mnemonicParsing="false" onAction="#addF" prefHeight="30.0" prefWidth="76.0" text="Add" BorderPane.alignment="CENTER">
+               <BorderPane.margin>
+                  <Insets bottom="5.0" top="10.0" />
+               </BorderPane.margin></Button>
+         </bottom>
+         <left>
+            <Label prefHeight="21.0" prefWidth="55.0" text="Title:" textAlignment="CENTER" BorderPane.alignment="CENTER">
+               <font>
+                  <Font name="System Bold" size="15.0" />
+               </font>
+               <padding>
+                  <Insets left="5.0" />
+               </padding>
+               <BorderPane.margin>
+                  <Insets bottom="15.0" />
+               </BorderPane.margin>
+            </Label>
+         </left>
+      </BorderPane>
+      <BorderPane fx:id="hbox1" layoutX="1225.0" layoutY="-42.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="128.0" prefWidth="305.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
+         <center>
+            <TextField fx:id="textField1" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" prefHeight="35.0" prefWidth="234.0" BorderPane.alignment="CENTER">
+               <BorderPane.margin>
+                  <Insets bottom="15.0" />
+               </BorderPane.margin></TextField>
+         </center>
+         <top>
+            <Label maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="52.0" prefWidth="183.0" text="Add new publication type" BorderPane.alignment="CENTER">
+               <padding>
+                  <Insets bottom="32.0" />
+               </padding>
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font>
+               <BorderPane.margin>
+                  <Insets top="10.0" />
+               </BorderPane.margin>
+            </Label>
+         </top>
+         <bottom>
+            <Button mnemonicParsing="false" onAction="#addP" prefHeight="30.0" prefWidth="76.0" text="Add" BorderPane.alignment="CENTER">
+               <BorderPane.margin>
+                  <Insets bottom="5.0" top="10.0" />
+               </BorderPane.margin>
+            </Button>
+         </bottom>
+         <left>
+            <Label prefHeight="21.0" prefWidth="55.0" text="Type:" textAlignment="CENTER" BorderPane.alignment="CENTER">
+               <font>
+                  <Font name="System Bold" size="15.0" />
+               </font>
+               <padding>
+                  <Insets left="5.0" />
+               </padding>
+               <BorderPane.margin>
+                  <Insets bottom="15.0" />
+               </BorderPane.margin>
+            </Label>
+         </left>
+         <GridPane.margin>
+            <Insets bottom="170.0" left="5.0" />
+         </GridPane.margin>
+      </BorderPane>
+      <BorderPane fx:id="hbox2" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="144.0" prefWidth="306.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
+         <top>
+            <Button maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#addS" prefHeight="35.0" prefWidth="270.0" text="Add new scientific work" BorderPane.alignment="CENTER">
+               <BorderPane.margin>
+                  <Insets top="10.0" />
+               </BorderPane.margin>
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Button>
+         </top>
+         <center>
+            <Button mnemonicParsing="false" onAction="#update" prefHeight="35.0" prefWidth="270.0" text="Update selected scientific work" BorderPane.alignment="CENTER">
+               <font>
+                  <Font size="16.0" />
+               </font></Button>
+         </center>
+         <bottom>
+            <Button mnemonicParsing="false" onAction="#delete" prefHeight="35.0" prefWidth="270.0" text="Delete selected scientific work" BorderPane.alignment="CENTER">
+               <BorderPane.margin>
+                  <Insets bottom="10.0" />
+               </BorderPane.margin>
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Button>
+         </bottom>
+         <GridPane.margin>
+            <Insets left="5.0" right="20.0" top="150.0" />
+         </GridPane.margin>
+      </BorderPane>
    </children>
 </GridPane>

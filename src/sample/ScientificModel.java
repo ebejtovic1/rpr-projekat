@@ -45,21 +45,6 @@ public class ScientificModel {
         scWork=dao.getAll();
     }
 
-   /* public void ispisiKnjige() {
-            System.out.println("Knjige su:");
-            for (ScientificWork k : knjige)
-                System.out.println(k);
-        }
-
-        public String dajKnjige() {
-            String ret="";
-            for(ScientificWork k: scWork){
-                ret+=k.ispis()+"\n";
-            }
-            return ret;
-        }
-*/
-
         public void deleteScientificWork() {
             scWork.remove(nowWork.get());
             nowWork.set(null);

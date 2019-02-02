@@ -12,18 +12,18 @@
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.RowConstraints?>
 
-<GridPane alignment="center" prefHeight="400.0" prefWidth="1550.0" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller">
+<GridPane alignment="center" prefHeight="500.0" prefWidth="1549.0" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller">
    <columnConstraints>
       <ColumnConstraints maxWidth="1521.0" minWidth="1521.0" prefWidth="1521.0" />
       <ColumnConstraints maxWidth="0.0" minWidth="0.0" prefWidth="0.0" />
    </columnConstraints>
    <rowConstraints>
       <RowConstraints maxHeight="38.0" minHeight="0.0" prefHeight="38.0" />
-      <RowConstraints maxHeight="318.0" minHeight="280.0" prefHeight="280.0" />
+      <RowConstraints maxHeight="318.0" minHeight="280.0" prefHeight="500.0" />
       <RowConstraints maxHeight="318.0" minHeight="3.0" prefHeight="55.0" />
    </rowConstraints>
    <children>
-      <TableView fx:id="table" editable="true" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="286.0" prefWidth="1540.0" GridPane.halignment="CENTER" GridPane.hgrow="NEVER" GridPane.rowIndex="1" GridPane.valignment="CENTER" GridPane.vgrow="NEVER">
+      <TableView fx:id="table" editable="true" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" prefHeight="450.0" prefWidth="1521.0" GridPane.halignment="CENTER" GridPane.hgrow="NEVER" GridPane.rowIndex="1" GridPane.valignment="CENTER" GridPane.vgrow="NEVER">
         <columns>
           <TableColumn fx:id="id" prefWidth="30.000015258789062" text="ID" />
           <TableColumn fx:id="title" prefWidth="436.99999618530273" text="Title" />
@@ -36,7 +36,7 @@
             <TableColumn fx:id="affiliation" prefWidth="217.0" resizable="false" text="Affiliation" />
         </columns>
          <GridPane.margin>
-            <Insets />
+            <Insets bottom="150.0" />
          </GridPane.margin>
       </TableView>
       <MenuBar prefHeight="32.0" prefWidth="1300.0">
@@ -56,7 +56,8 @@
                         <MenuItem mnemonicParsing="false" onAction="#addF" text="Field of study" />
                     </items>
                   </Menu>
-              <MenuItem mnemonicParsing="false" text="Delete" />
+              <MenuItem mnemonicParsing="false" onAction="#delete" text="Delete" />
+                  <MenuItem mnemonicParsing="false" onAction="#update" text="Update" />
             </items>
           </Menu>
           <Menu mnemonicParsing="false" text="_Help">
@@ -65,6 +66,9 @@
             </items>
           </Menu>
         </menus>
+         <GridPane.margin>
+            <Insets bottom="300.0" />
+         </GridPane.margin>
       </MenuBar>
       <ChoiceBox fx:id="choiceBox" prefHeight="31.0" prefWidth="150.0" GridPane.halignment="CENTER" GridPane.rowIndex="2">
          <GridPane.margin>

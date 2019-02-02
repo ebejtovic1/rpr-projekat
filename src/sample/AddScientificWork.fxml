@@ -45,6 +45,6 @@
       <TextField fx:id="journal" maxWidth="-Infinity" prefHeight="31.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="4" />
       <ComboBox fx:id="publType" editable="true" prefHeight="31.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="5" />
       <Spinner fx:id="citations" editable="true" initialValue="0" max="10000000" min="0" prefHeight="31.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="7" />
-      <Button fx:id="addBtn" maxHeight="-Infinity" maxWidth="-Infinity" mnemonicParsing="false" onAction="#add" prefHeight="31.0" prefWidth="103.0" text="Add" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.rowIndex="9" />
+      <Button fx:id="addBtn" maxHeight="-Infinity" maxWidth="-Infinity" mnemonicParsing="false" onAction="#add" prefHeight="31.0" prefWidth="103.0" text="Confirm" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.rowIndex="9" />
    </children>
 </GridPane>

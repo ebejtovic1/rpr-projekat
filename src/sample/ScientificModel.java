@@ -40,6 +40,11 @@ public class ScientificModel {
         this.scWork = scWork;
     }
 
+    public void reload(){
+        ScientificWorksDAO dao=ScientificWorksDAO.getInstance();
+        scWork=dao.getAll();
+    }
+
    /* public void ispisiKnjige() {
             System.out.println("Knjige su:");
             for (ScientificWork k : knjige)

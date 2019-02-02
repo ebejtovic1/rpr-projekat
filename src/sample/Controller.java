@@ -1,18 +1,27 @@
 package sample;
 
-import javafx.beans.property.SimpleIntegerProperty;
-import javafx.beans.property.SimpleStringProperty;
+import javafx.beans.property.*;
 import javafx.beans.value.ObservableValue;
+import javafx.collections.ObservableSet;
 import javafx.collections.transformation.FilteredList;
 import javafx.collections.transformation.SortedList;
 import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
-import javafx.scene.control.ChoiceBox;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
-import javafx.scene.control.TextField;
+import javafx.fxml.FXMLLoader;
+import javafx.print.*;
+import javafx.scene.Scene;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.layout.Pane;
+import javafx.scene.transform.Scale;
+import javafx.stage.Stage;
+import javafx.stage.StageStyle;
+import javafx.stage.WindowEvent;
 import javafx.util.Callback;
+
+import java.io.IOException;
+import java.util.Optional;
 
 public class Controller {
     public static ScientificModel model=new ScientificModel();
@@ -52,13 +61,8 @@ public class Controller {
         year.setCellValueFactory(new PropertyValueFactory<ScientificWork, SimpleIntegerProperty>("YearOfIssue"));
         citations.setCellValueFactory(new PropertyValueFactory<ScientificWork, SimpleIntegerProperty>("Citations"));
         affiliation.setCellValueFactory(new PropertyValueFactory<ScientificWork, SimpleStringProperty>("Affiliation"));
+        FilteredList<ScientificWork> flPerson = new FilteredList(model.getScWork(), p -> true);
 
-        //table.setItems(FXCollections.observableList(model.getScWork()));
-        // ili table.setItems(FXCollections.observableList(dao.getAll()));
-
-        FilteredList<ScientificWork> flPerson = new FilteredList(model.getScWork(), p -> true);//Pass the data to a filtered list
-        //table.setItems(flPerson);//
-        //table.getColumns().addAll(id, title, author, field,journal,type, year, citations,affiliation);
 
         title.setSortable(true);
         author.setSortable(true);
@@ -74,10 +78,10 @@ public class Controller {
             }
         });
 
-        textField.setPromptText("Search here!");
+        textField.setPromptText("Search here...");
         textField.setOnKeyReleased(keyEvent ->
         {
-            switch (choiceBox.getValue())//Switch on choiceBox value
+            switch (choiceBox.getValue())
             {
                 case "By title":
                     flPerson.setPredicate(p -> p.getTitle().toLowerCase().contains(textField.getText().toLowerCase().trim()));
@@ -139,22 +143,126 @@ public class Controller {
         table.setItems(sortedData);
     }
 
-    public void print(ActionEvent actionEvent){
+    public void print(ActionEvent actionEvent) {
 
+        PrinterJob job = PrinterJob.createPrinterJob();
+        if (job != null && job.showPrintDialog(table.getScene().getWindow())) {
+            boolean success = job.printPage(table);
+            if (success) {
+                job.endJob();
+            }
+        }
     }
+
     public void exit(ActionEvent actionEvent){
         System.exit(0);
     }
     public void addS(ActionEvent actionEvent){
-
+        FXMLLoader loader1 = new FXMLLoader(getClass().getResource("AddScientificWork.fxml"));
+        Stage stage = new Stage(StageStyle.DECORATED);
+        try { stage.setScene(new Scene((Pane) loader1.load())
+        );
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        stage.show();
+        stage.setOnCloseRequest(new EventHandler<WindowEvent>() {
+            public void handle(WindowEvent we) {
+                model.getScWork().clear();
+                model.reload();
+                initialize();
+            }
+        });
     }
 
     public void addF(ActionEvent actionEvent){
-
+        FXMLLoader loader1 = new FXMLLoader(getClass().getResource("AddFieldOfStudy.fxml"));
+        Stage stage = new Stage(StageStyle.DECORATED);
+        try { stage.setScene(new Scene((Pane) loader1.load())
+        );
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        stage.show();
     }
+
     public void addP(ActionEvent actionEvent){
-
+        FXMLLoader loader1 = new FXMLLoader(getClass().getResource("AddPublicationType.fxml"));
+        Stage stage = new Stage(StageStyle.DECORATED);
+        try { stage.setScene(new Scene((Pane) loader1.load())
+        );
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        stage.show();
     }
 
+    public void delete (ActionEvent actionEvent)throws NoSelectedExeption {
+        try {
+            int id = table.getSelectionModel().getSelectedItem().getId();
+            dao.delete(id);
+            model.getScWork().clear();
+            model.reload();
+            initialize();
+        } catch (Exception e) {
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Error");
+            alert.setHeaderText("No selected item");
+            Optional<ButtonType> action= alert.showAndWait();
+            if(action.get()== ButtonType.OK){
+                alert.close();
+            }
+            return;
+        }
+    }
 
+    public void update (ActionEvent actionEvent)throws NoSelectedExeption {
+        FXMLLoader loader1 = new FXMLLoader(getClass().getResource("AddScientificWork.fxml"));
+        Stage stage = new Stage(StageStyle.DECORATED);
+        try { stage.setScene(new Scene((Pane) loader1.load())
+        );
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        stage.show();
+        AddScientificWorkController ctrl = loader1.getController();
+        try {
+            ctrl.setId(table.getSelectionModel().getSelectedItem().getId());
+
+            ctrl.getTitle().textProperty().bindBidirectional(new SimpleStringProperty(table.getSelectionModel().getSelectedItem().getTitle()));
+            ctrl.getAuthor().textProperty().bindBidirectional(new SimpleStringProperty(table.getSelectionModel().getSelectedItem().getAuthor()));
+            ctrl.getAff().textProperty().bindBidirectional(new SimpleStringProperty(table.getSelectionModel().getSelectedItem().getAffiliation()));
+            ctrl.getJournal().textProperty().bindBidirectional(new SimpleStringProperty(table.getSelectionModel().getSelectedItem().getJournal()));
+
+            ObjectProperty<Integer> objectProp = new SimpleObjectProperty<>(table.getSelectionModel().getSelectedItem().getYearOfIssue());
+            IntegerProperty integerProperty = IntegerProperty.integerProperty(objectProp);
+            ctrl.getYear().getValueFactory().valueProperty().bindBidirectional(objectProp);
+
+
+            ObjectProperty<Integer> objectProp1 = new SimpleObjectProperty<>(table.getSelectionModel().getSelectedItem().getCitations());
+            IntegerProperty integerProperty1 = IntegerProperty.integerProperty(objectProp1);
+            ctrl.getCitations().getValueFactory().valueProperty().bindBidirectional(objectProp1);
+
+            ctrl.getFieldStudy().valueProperty().bindBidirectional(new SimpleStringProperty(table.getSelectionModel().getSelectedItem().getFieldOfStudy().getTitle()));
+            ctrl.getPublType().valueProperty().bindBidirectional(new SimpleStringProperty(table.getSelectionModel().getSelectedItem().getPublicationType().getType()));
+
+            stage.setOnCloseRequest(new EventHandler<WindowEvent>() {
+                public void handle(WindowEvent we) {
+                    model.getScWork().clear();
+                    model.reload();
+                    initialize();
+                }
+            });
+        }
+        catch (Exception e){
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Error");
+            alert.setHeaderText("No selected item");
+            Optional<ButtonType> action= alert.showAndWait();
+            if(action.get()== ButtonType.OK){
+                alert.close();
+            }
+            return;
+        }
+    }
 }

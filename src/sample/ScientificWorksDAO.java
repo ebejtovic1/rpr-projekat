@@ -13,7 +13,7 @@ public class ScientificWorksDAO {
     private static ScientificWorksDAO instance;
 
     private Connection conn;
-    private PreparedStatement selectAll, getFieldQuery, getTypeQuery, addField, addType, addScien, maxIdField, maxIdType, maxIdScien, getIdFieldQuery, getIdTypeQuery ;
+    private PreparedStatement selectAll, updateScien, getFieldQuery, getTypeQuery, addField, addType, addScien, maxIdField, maxIdType, maxIdScien, getIdFieldQuery, getIdTypeQuery, deleteSW ;
 
     public static ScientificWorksDAO getInstance(){
         if(instance==null)instance= new ScientificWorksDAO();
@@ -27,7 +27,6 @@ public class ScientificWorksDAO {
         }
         try {
            selectAll=conn.prepareStatement("SELECT* FROM Scientific_work");
-           //selectAll=conn.prepareStatement("SELECT Scientific_work.id,Scientific_work.title, Scientific_work.author, Field_of_Study.title, Scientific_work.journal, Publication_Type.typee, Scientific_work.YearOfIssue, Scientific_work.Citations, Scientific_work.Affiliation FROM Scientific_work, Publication_Type, Field_of_Study.title WHERE Scientific_work.FieldOfStudy=Field_of_Study.id AND Scientific_work.PublicationType=Publication_Type.id ");
         } catch (SQLException e) {
             try {
                 regenerateBase();
@@ -46,11 +45,13 @@ public class ScientificWorksDAO {
             addField=conn.prepareStatement("INSERT INTO Field_of_study VALUES(?,?)");
             addType=conn.prepareStatement("INSERT INTO Publication_Type VALUES(?,?)");
             addScien=conn.prepareStatement("INSERT INTO Scientific_work VALUES(?,?,?,?,?,?,?,?,?)");
+            updateScien=conn.prepareStatement("UPDATE Scientific_work SET title=?, author=?, FieldOfStudy=?, Journal=?, PublicationType=?, YearOfIssue=?, Citations=?, Affiliation=? WHERE id=?");
             maxIdField=conn.prepareStatement("SELECT max(id)+1 FROM Field_of_study");
             maxIdType=conn.prepareStatement("SELECT max(id)+1 FROM Publication_Type");
             maxIdScien=conn.prepareStatement("SELECT max(id)+1 FROM Scientific_work");
             getIdFieldQuery=conn.prepareStatement("SELECT id FROM Field_of_study WHERE Title=?");
             getIdTypeQuery=conn.prepareStatement("SELECT id FROM Publication_Type WHERE typee=?");
+            deleteSW=conn.prepareStatement("DELETE FROM Scientific_work WHERE id=?");
 
         } catch (SQLException e) {
             e.printStackTrace();
@@ -184,6 +185,16 @@ public class ScientificWorksDAO {
         }
     }
 
+    public void delete(int id){
+        try {
+            deleteSW.setInt(1,id);
+            deleteSW.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+    }
+
     public void addScien(String title, String autor, int field, String journal, int publ, int year, int citations, String aff){
         try {
             ResultSet rs=maxIdScien.executeQuery();
@@ -201,6 +212,24 @@ public class ScientificWorksDAO {
             addScien.setInt(8, citations);
             addScien.setString(9, aff);
             addScien.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void updateScien(String title, String autor, int field, String journal, int publ, int year, int citations, String aff, int id){
+        try {
+
+            updateScien.setString(1, title);
+            updateScien.setString(2, autor);
+            updateScien.setInt(3, field);
+            updateScien.setString(4, journal);
+            updateScien.setInt(5,publ);
+            updateScien.setInt(6, year);
+            updateScien.setInt(7, citations);
+            updateScien.setString(8, aff);
+            updateScien.setInt(9, id);
+            updateScien.executeUpdate();
         } catch (SQLException e) {
             e.printStackTrace();
         }

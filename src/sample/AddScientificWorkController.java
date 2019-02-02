@@ -2,6 +2,7 @@ package sample;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Spinner;
@@ -18,6 +19,11 @@ public class AddScientificWorkController {
     public Spinner<Integer> year;
     public Spinner<Integer> citations;
     public TextField aff;
+    private int id=-1;
+
+    public void setId(int id) {
+        this.id = id;
+    }
 
     @FXML
     private void initialize() {
@@ -54,12 +60,57 @@ public class AddScientificWorkController {
 
     }
     public void add(ActionEvent actionEvent){
+        if(id!=-1){
+            ScientificWorksDAO dao=ScientificWorksDAO.getInstance();
+            int field=dao.getIdField(fieldStudy.getValue());
+            int p=dao.getIdType(publType.getValue());
+            int value = (Integer) year.getValue();
+            int value1 = (Integer) citations.getValue();
+            dao.updateScien(title.getText(),author.getText(),field,journal.getText(),p,value,value1,aff.getText(),id);
+        }
+        else{
         ScientificWorksDAO dao=ScientificWorksDAO.getInstance();
         int field=dao.getIdField(fieldStudy.getValue());
         int p=dao.getIdType(publType.getValue());
         int value = (Integer) year.getValue();
         int value1 = (Integer) citations.getValue();
-        dao.addScien(title.getText(),author.getText(),field,journal.getText(),p,value,value1,aff.getText());
+        dao.addScien(title.getText(),author.getText(),field,journal.getText(),p,value,value1,aff.getText());}
+
     }
 
+    public Button getAddBtn() {
+        return addBtn;
+    }
+
+    public TextField getTitle() {
+        return title;
+    }
+
+    public TextField getAuthor() {
+        return author;
+    }
+
+    public ComboBox<String> getFieldStudy() {
+        return fieldStudy;
+    }
+
+    public TextField getJournal() {
+        return journal;
+    }
+
+    public ComboBox<String> getPublType() {
+        return publType;
+    }
+
+    public Spinner<Integer> getYear() {
+        return year;
+    }
+
+    public Spinner<Integer> getCitations() {
+        return citations;
+    }
+
+    public TextField getAff() {
+        return aff;
+    }
 }

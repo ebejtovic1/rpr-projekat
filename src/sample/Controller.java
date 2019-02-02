@@ -152,6 +152,7 @@ public class Controller {
                 job.endJob();
             }
         }
+        model.Ispisi();
     }
 
     public void exit(ActionEvent actionEvent){

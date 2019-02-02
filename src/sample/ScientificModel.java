@@ -64,6 +64,13 @@ public class ScientificModel {
             scWork.remove(nowWork.get());
             nowWork.set(null);
         }
+        public void Ispisi(){
+            int i=1;
+            for(ScientificWork heh: scWork){
+                System.out.println(i+". TITLE: "+ heh.getTitle() + ", AUTHOR: " + heh.getAuthor() + ", FIELD OF STUDY: "+ heh.getFieldOfStudy().getTitle() + ", JOURNAL: " +heh.getJournal()+ ", PUBLICATION TYPE: " + heh.getPublicationType().getType()+ ", YEAR: "+ String.valueOf(heh.getYearOfIssue())+ ", CITATIONS: " + String.valueOf(heh.getCitations())+ ", AFFILIATION: " + heh.getAffiliation());
+i++;
+            }
+        }
 
         public void addScientificWork(ScientificWork ScientificWork) {
             scWork.add(ScientificWork);

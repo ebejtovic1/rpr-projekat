@@ -1,0 +1,58 @@
+<component name="libraryTable">
+  <library name="br.com.prixma:vraptor-jasperreport:4.1.1" type="repository">
+    <properties maven-id="br.com.prixma:vraptor-jasperreport:4.1.1" />
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/lib/vraptor-jasperreport-4.1.1.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/vraptor-4.0.0.Final.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/guava-15.0.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/iogi-1.0.0.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/javassist-3.18.1-GA.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/slf4j-api-1.7.5.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/mirror-1.6.1.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/paranamer-2.6.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/xstream-1.4.7.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/xmlpull-1.1.3.1.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/xpp3_min-1.1.4c.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/javax.annotation-api-1.2.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/javax.interceptor-api-1.2.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/javax.ejb-api-3.2.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/javax.transaction-api-1.2.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/gson-2.2.4.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/validation-api-1.1.0.Final.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/cdi-api-1.1.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/el-api-2.2.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/jboss-interceptors-api_1.1_spec-1.0.0.Beta1.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/jsr250-api-1.0.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/javax.inject-1.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/jasperreports-5.5.2.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/commons-beanutils-1.8.0.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/commons-collections-3.2.1.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/commons-digester-2.1.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/commons-logging-1.1.1.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/itext-2.1.7.js2.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/bcmail-jdk14-138.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/bcprov-jdk14-138.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/bctsp-jdk14-1.38.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/bcprov-jdk14-1.38.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/bcmail-jdk14-1.38.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/jcommon-1.0.15.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/jfreechart-1.0.12.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/xml-apis-1.3.02.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/jdtcore-3.1.0.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/castor-1.2.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/jackson-core-2.1.4.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/jackson-databind-2.1.4.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/jackson-annotations-2.1.4.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/lucene-core-4.5.1.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/lucene-analyzers-common-4.5.1.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/lucene-queryparser-4.5.1.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/lucene-queries-4.5.1.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/lucene-sandbox-4.5.1.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/jakarta-regexp-1.4.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/olap4j-0.9.7.309-JS-3.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/hamcrest-all-1.1.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

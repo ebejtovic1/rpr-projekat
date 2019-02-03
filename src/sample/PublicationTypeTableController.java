@@ -24,6 +24,7 @@ public class PublicationTypeTableController {
 
     @FXML
     private void initialize() {
+
         id.setCellValueFactory(new PropertyValueFactory<PublicationType, SimpleIntegerProperty>("id"));
         type.setCellValueFactory(new PropertyValueFactory<PublicationType, SimpleStringProperty>("Type"));
 

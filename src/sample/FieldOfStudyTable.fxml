@@ -30,8 +30,8 @@
       </TextField>
       <TableView fx:id="table" prefHeight="259.0" prefWidth="352.0" GridPane.columnSpan="2" GridPane.halignment="RIGHT" GridPane.rowIndex="1">
         <columns>
-          <TableColumn fx:id="id" prefWidth="75.0" text="ID" />
-          <TableColumn fx:id="type" prefWidth="275.0" text="Type" />
+          <TableColumn fx:id="id" prefWidth="46.0" text="ID" />
+          <TableColumn fx:id="type" prefWidth="316.0" text="Title" />
         </columns>
          <GridPane.margin>
             <Insets right="-2.0" />

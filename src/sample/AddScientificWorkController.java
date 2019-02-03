@@ -62,7 +62,15 @@ public class AddScientificWorkController {
         if(id!=-1){
             ScientificWorksDAO dao=ScientificWorksDAO.getInstance();
             int field=dao.getIdField(fieldStudy.getValue());
+            if(field==-1){
+                dao.addFieldS(fieldStudy.getValue());
+                field=dao.getIdField(fieldStudy.getValue());
+            }
             int p=dao.getIdType(publType.getValue());
+            if(p==-1){
+                dao.addTypeP(publType.getValue());
+                p=dao.getIdType(publType.getValue());
+            }
             int value = (Integer) year.getValue();
             int value1 = (Integer) citations.getValue();
             dao.updateScien(title.getText(),author.getText(),field,journal.getText(),p,value,value1,aff.getText(),id);
@@ -70,7 +78,15 @@ public class AddScientificWorkController {
         else{
         ScientificWorksDAO dao=ScientificWorksDAO.getInstance();
         int field=dao.getIdField(fieldStudy.getValue());
+            if(field==-1){
+                dao.addFieldS(fieldStudy.getValue());
+                field=dao.getIdField(fieldStudy.getValue());
+            }
         int p=dao.getIdType(publType.getValue());
+            if(p==-1){
+                dao.addTypeP(publType.getValue());
+                p=dao.getIdType(publType.getValue());
+            }
         int value = (Integer) year.getValue();
         int value1 = (Integer) citations.getValue();
         dao.addScien(title.getText(),author.getText(),field,journal.getText(),p,value,value1,aff.getText());}

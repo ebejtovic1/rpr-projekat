@@ -9,7 +9,7 @@
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.RowConstraints?>
 
-<GridPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="453.0" prefWidth="352.0" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.PublicationTypeTableController">
+<GridPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="475.0" prefWidth="351.0" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.PublicationTypeTableController">
   <columnConstraints>
       <ColumnConstraints hgrow="SOMETIMES" maxWidth="360.0" minWidth="10.0" prefWidth="303.0" />
     <ColumnConstraints hgrow="SOMETIMES" maxWidth="304.0" minWidth="10.0" prefWidth="297.0" />
@@ -22,7 +22,7 @@
       <RowConstraints maxHeight="62.0" minHeight="10.0" prefHeight="35.0" vgrow="SOMETIMES" />
   </rowConstraints>
    <children>
-      <Button mnemonicParsing="false" onAction="#delete" prefHeight="31.0" prefWidth="150.0" text="Delete" GridPane.columnSpan="2" GridPane.halignment="CENTER" GridPane.rowIndex="2" />
+      <Button fx:id="delete" mnemonicParsing="false" onAction="#delete" prefHeight="31.0" prefWidth="150.0" text="Delete" GridPane.columnSpan="2" GridPane.halignment="CENTER" GridPane.rowIndex="2" />
       <TextField fx:id="textField" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="31.0" prefWidth="355.0" GridPane.columnSpan="2">
          <GridPane.margin>
             <Insets left="5.0" right="5.0" />

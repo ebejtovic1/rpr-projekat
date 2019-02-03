@@ -269,9 +269,16 @@ public class Controller {
             IntegerProperty integerProperty1 = IntegerProperty.integerProperty(objectProp1);
             ctrl.getCitations().getValueFactory().valueProperty().bindBidirectional(objectProp1);
 
+            try{
             ctrl.getFieldStudy().valueProperty().bindBidirectional(new SimpleStringProperty(table.getSelectionModel().getSelectedItem().getFieldOfStudy().getTitle()));
-            ctrl.getPublType().valueProperty().bindBidirectional(new SimpleStringProperty(table.getSelectionModel().getSelectedItem().getPublicationType().getType()));
-
+            }catch(Exception e){
+                ctrl.getFieldStudy().valueProperty().bindBidirectional(new SimpleStringProperty(""));
+            }
+            try {
+                ctrl.getPublType().valueProperty().bindBidirectional(new SimpleStringProperty(table.getSelectionModel().getSelectedItem().getPublicationType().getType()));
+            }catch(Exception e){
+                ctrl.getPublType().valueProperty().bindBidirectional(new SimpleStringProperty(""));
+            }
             stage.setOnCloseRequest(new EventHandler<WindowEvent>() {
                 public void handle(WindowEvent we) {
                     model.getScWork().clear();
@@ -290,6 +297,7 @@ public class Controller {
         } catch (IOException e) {
             e.printStackTrace();
         }
+        stage.setTitle("Publication type");
         stage.show();
         stage.setOnCloseRequest(new EventHandler<WindowEvent>() {
             public void handle(WindowEvent we) {
@@ -307,6 +315,7 @@ public class Controller {
         } catch (IOException e) {
             e.printStackTrace();
         }
+        stage.setTitle("Field of study");
         stage.show();
 
         stage.setOnCloseRequest(new EventHandler<WindowEvent>() {

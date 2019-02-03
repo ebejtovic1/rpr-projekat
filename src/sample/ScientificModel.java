@@ -2,10 +2,10 @@ package sample;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import java.io.Serializable;
 
-public class ScientificModel {
+public class ScientificModel implements Serializable {
 
-    
         private ObservableList<ScientificWork> scWork = FXCollections.observableArrayList();
 
 

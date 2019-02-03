@@ -1,6 +1,9 @@
 package sample;
 
-public class ScientificWork {
+import javax.xml.bind.annotation.XmlElement;
+import java.io.Serializable;
+
+public class ScientificWork implements Serializable {
     private int id;
     private String title;
     private String author;
@@ -26,6 +29,7 @@ public class ScientificWork {
     public ScientificWork() {
     }
 
+    @XmlElement
     public int getId() {
         return id;
     }
@@ -33,7 +37,7 @@ public class ScientificWork {
     public void setId(int id) {
         this.id = id;
     }
-
+    @XmlElement
     public String getTitle() {
         return title;
     }
@@ -45,11 +49,11 @@ public class ScientificWork {
     public String getAuthor() {
         return author;
     }
-
+    @XmlElement
     public void setAuthor(String author) {
         this.author = author;
     }
-
+    @XmlElement
     public FieldOfStudy getFieldOfStudy() {
         return fieldOfStudy;
     }
@@ -57,7 +61,7 @@ public class ScientificWork {
     public void setFieldOfStudy(FieldOfStudy fieldOfStudy) {
         this.fieldOfStudy = fieldOfStudy;
     }
-
+    @XmlElement
     public String getJournal() {
         return journal;
     }
@@ -65,7 +69,7 @@ public class ScientificWork {
     public void setJournal(String journal) {
         this.journal = journal;
     }
-
+    @XmlElement
     public PublicationType getPublicationType() {
         return publicationType;
     }
@@ -73,7 +77,7 @@ public class ScientificWork {
     public void setPublicationType(PublicationType publicationType) {
         this.publicationType = publicationType;
     }
-
+    @XmlElement
     public int getYearOfIssue() {
         return yearOfIssue;
     }
@@ -81,7 +85,7 @@ public class ScientificWork {
     public void setYearOfIssue(int yearOfIssue) {
         this.yearOfIssue = yearOfIssue;
     }
-
+    @XmlElement
     public int getCitations() {
         return citations;
     }
@@ -89,7 +93,7 @@ public class ScientificWork {
     public void setCitations(int citations) {
         this.citations = citations;
     }
-
+    @XmlElement
     public String getAffiliation() {
         return affiliation;
     }

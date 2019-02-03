@@ -1,6 +1,8 @@
 package sample;
 
-public class PublicationType {
+import java.io.Serializable;
+
+public class PublicationType implements Serializable {
     private int id;
     private String type;
 

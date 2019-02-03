@@ -2,6 +2,7 @@ package sample;
 
 import javafx.beans.property.*;
 import javafx.beans.value.ObservableValue;
+import javafx.collections.FXCollections;
 import javafx.collections.transformation.FilteredList;
 import javafx.collections.transformation.SortedList;
 import javafx.event.ActionEvent;
@@ -17,7 +18,17 @@ import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import javafx.stage.WindowEvent;
 import javafx.util.Callback;
-import java.io.IOException;
+
+import javax.xml.bind.JAXBContext;
+import javax.xml.bind.Marshaller;
+import java.beans.XMLDecoder;
+import java.beans.XMLEncoder;
+import java.io.*;
+import java.nio.charset.StandardCharsets;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.util.ArrayList;
 import java.util.NoSuchElementException;
 import java.util.Optional;
 
@@ -306,6 +317,21 @@ public class Controller {
         }
         return;
     }
+    public void save(ActionEvent actionEvent) throws FileNotFoundException {
+
+        ArrayList<ScientificWork>zapisi=new ArrayList<ScientificWork>();
+        for(ScientificWork modell:model.getScWork()){
+            zapisi.add(modell);
+        }
+        try {
+            XMLEncoder izlaz = new XMLEncoder(new FileOutputStream("saved.xml"));
+            izlaz.writeObject(zapisi);
+            izlaz.close();
+        } catch(Exception e) {
+            System.out.println("Error: "+e);
+        }
+    }
+
 
     public void addP(ActionEvent actionEvent){
         ScientificWorksDAO dao=ScientificWorksDAO.getInstance();

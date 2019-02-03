@@ -1,6 +1,8 @@
 package sample;
 
-public class FieldOfStudy {
+import java.io.Serializable;
+
+public class FieldOfStudy implements Serializable {
     private int id;
     private String title;
 

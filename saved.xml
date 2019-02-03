@@ -1,0 +1,353 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<java version="10.0.2" class="java.beans.XMLDecoder">
+ <object class="java.util.ArrayList">
+  <void method="add">
+   <object class="sample.ScientificWork">
+    <void property="affiliation">
+     <string>Stanford University</string>
+    </void>
+    <void property="author">
+     <string>Pena Reyes, Carlos Andres</string>
+    </void>
+    <void property="citations">
+     <int>55</int>
+    </void>
+    <void property="fieldOfStudy">
+     <object class="sample.FieldOfStudy">
+      <void property="id">
+       <int>8</int>
+      </void>
+      <void property="title">
+       <string>Mathematics</string>
+      </void>
+     </object>
+    </void>
+    <void property="id">
+     <int>1</int>
+    </void>
+    <void property="publicationType">
+     <object class="sample.PublicationType">
+      <void property="id">
+       <int>4</int>
+      </void>
+      <void property="type">
+       <string>Books</string>
+      </void>
+     </object>
+    </void>
+    <void property="title">
+     <string>Coevolutionary fuzzy modeling</string>
+    </void>
+    <void property="yearOfIssue">
+     <int>2004</int>
+    </void>
+   </object>
+  </void>
+  <void method="add">
+   <object class="sample.ScientificWork">
+    <void property="affiliation">
+     <string>University of Minnesota</string>
+    </void>
+    <void property="author">
+     <string>Mukund Deshpande, George Karypis</string>
+    </void>
+    <void property="citations">
+     <int>2209</int>
+    </void>
+    <void property="fieldOfStudy">
+     <object class="sample.FieldOfStudy">
+      <void property="id">
+       <int>6</int>
+      </void>
+      <void property="title">
+       <string>Computer science</string>
+      </void>
+     </object>
+    </void>
+    <void property="id">
+     <int>2</int>
+    </void>
+    <void property="journal">
+     <string>ACM Transactions on IS</string>
+    </void>
+    <void property="publicationType">
+     <object class="sample.PublicationType">
+      <void property="id">
+       <int>1</int>
+      </void>
+      <void property="type">
+       <string>Journal publications</string>
+      </void>
+     </object>
+    </void>
+    <void property="title">
+     <string>Item-based top- N recommendation algorithms</string>
+    </void>
+    <void property="yearOfIssue">
+     <int>2004</int>
+    </void>
+   </object>
+  </void>
+  <void method="add">
+   <object class="sample.ScientificWork">
+    <void property="affiliation">
+     <string>Hardvard University</string>
+    </void>
+    <void property="author">
+     <string>Subir Sachdev</string>
+    </void>
+    <void property="citations">
+     <int>6746</int>
+    </void>
+    <void property="fieldOfStudy">
+     <object class="sample.FieldOfStudy">
+      <void property="id">
+       <int>7</int>
+      </void>
+      <void property="title">
+       <string>Physics</string>
+      </void>
+     </object>
+    </void>
+    <void property="id">
+     <int>3</int>
+    </void>
+    <void property="publicationType">
+     <object class="sample.PublicationType">
+      <void property="id">
+       <int>4</int>
+      </void>
+      <void property="type">
+       <string>Books</string>
+      </void>
+     </object>
+    </void>
+    <void property="title">
+     <string>Quantum Phase Transitions</string>
+    </void>
+    <void property="yearOfIssue">
+     <int>2000</int>
+    </void>
+   </object>
+  </void>
+  <void method="add">
+   <object class="sample.ScientificWork">
+    <void property="affiliation">
+     <string>Renesas Electronics</string>
+    </void>
+    <void property="author">
+     <string>Akio Shima</string>
+    </void>
+    <void property="citations">
+     <int>55519</int>
+    </void>
+    <void property="fieldOfStudy">
+     <object class="sample.FieldOfStudy">
+      <void property="id">
+       <int>5</int>
+      </void>
+      <void property="title">
+       <string>Engineering</string>
+      </void>
+     </object>
+    </void>
+    <void property="id">
+     <int>4</int>
+    </void>
+    <void property="publicationType">
+     <object class="sample.PublicationType">
+      <void property="id">
+       <int>5</int>
+      </void>
+      <void property="type">
+       <string>Patents</string>
+      </void>
+     </object>
+    </void>
+    <void property="title">
+     <string>Manufacture of semiconductor device</string>
+    </void>
+    <void property="yearOfIssue">
+     <int>1986</int>
+    </void>
+   </object>
+  </void>
+  <void method="add">
+   <object class="sample.ScientificWork">
+    <void property="affiliation">
+     <string>National Renewable Energy Laboratory</string>
+    </void>
+    <void property="author">
+     <string>V.H.Johnson</string>
+    </void>
+    <void property="citations">
+     <int>466</int>
+    </void>
+    <void property="fieldOfStudy">
+     <object class="sample.FieldOfStudy">
+      <void property="id">
+       <int>5</int>
+      </void>
+      <void property="title">
+       <string>Engineering</string>
+      </void>
+     </object>
+    </void>
+    <void property="id">
+     <int>5</int>
+    </void>
+    <void property="journal">
+     <string>Jornual of Power Sources</string>
+    </void>
+    <void property="publicationType">
+     <object class="sample.PublicationType">
+      <void property="id">
+       <int>1</int>
+      </void>
+      <void property="type">
+       <string>Journal publications</string>
+      </void>
+     </object>
+    </void>
+    <void property="title">
+     <string>Battery performance models in ADVISOR</string>
+    </void>
+    <void property="yearOfIssue">
+     <int>2002</int>
+    </void>
+   </object>
+  </void>
+  <void method="add">
+   <object class="sample.ScientificWork">
+    <void property="affiliation">
+     <string>KAVEY</string>
+    </void>
+    <void property="author">
+     <string>Neil B. Kavey</string>
+    </void>
+    <void property="citations">
+     <int>30</int>
+    </void>
+    <void property="fieldOfStudy">
+     <object class="sample.FieldOfStudy">
+      <void property="id">
+       <int>1</int>
+      </void>
+      <void property="title">
+       <string>Medicine</string>
+      </void>
+     </object>
+    </void>
+    <void property="id">
+     <int>6</int>
+    </void>
+    <void property="journal">
+     <string>The Lancet</string>
+    </void>
+    <void property="publicationType">
+     <object class="sample.PublicationType">
+      <void property="id">
+       <int>5</int>
+      </void>
+      <void property="type">
+       <string>Patents</string>
+      </void>
+     </object>
+    </void>
+    <void property="title">
+     <string>Treatment for insomnia</string>
+    </void>
+    <void property="yearOfIssue">
+     <int>1993</int>
+    </void>
+   </object>
+  </void>
+  <void method="add">
+   <object class="sample.ScientificWork">
+    <void property="affiliation">
+     <string>Ohio State University</string>
+    </void>
+    <void property="author">
+     <string>Andrew F. Hayes</string>
+    </void>
+    <void property="citations">
+     <int>18379</int>
+    </void>
+    <void property="fieldOfStudy">
+     <object class="sample.FieldOfStudy">
+      <void property="id">
+       <int>9</int>
+      </void>
+      <void property="title">
+       <string>Psychology</string>
+      </void>
+     </object>
+    </void>
+    <void property="id">
+     <int>7</int>
+    </void>
+    <void property="publicationType">
+     <object class="sample.PublicationType">
+      <void property="id">
+       <int>3</int>
+      </void>
+      <void property="type">
+       <string>Articles</string>
+      </void>
+     </object>
+    </void>
+    <void property="title">
+     <string>Introduction to mediationon</string>
+    </void>
+    <void property="yearOfIssue">
+     <int>2013</int>
+    </void>
+   </object>
+  </void>
+  <void method="add">
+   <object class="sample.ScientificWork">
+    <void property="affiliation">
+     <string>University of Pennsylvania</string>
+    </void>
+    <void property="author">
+     <string>Richard M. Schultz</string>
+    </void>
+    <void property="citations">
+     <int>306</int>
+    </void>
+    <void property="fieldOfStudy">
+     <object class="sample.FieldOfStudy">
+      <void property="id">
+       <int>11</int>
+      </void>
+      <void property="title">
+       <string>Art</string>
+      </void>
+     </object>
+    </void>
+    <void property="id">
+     <int>10</int>
+    </void>
+    <void property="journal">
+     <string>Science</string>
+    </void>
+    <void property="publicationType">
+     <object class="sample.PublicationType">
+      <void property="id">
+       <int>1</int>
+      </void>
+      <void property="type">
+       <string>Journal publications</string>
+      </void>
+     </object>
+    </void>
+    <void property="title">
+     <string>The Science of Art</string>
+    </void>
+    <void property="yearOfIssue">
+     <int>2002</int>
+    </void>
+   </object>
+  </void>
+ </object>
+</java>

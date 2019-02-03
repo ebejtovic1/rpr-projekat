@@ -54,6 +54,7 @@
         <menus>
           <Menu mnemonicParsing="false" text="_File">
             <items>
+                  <MenuItem mnemonicParsing="false" onAction="#save" text="Save" />
                   <MenuItem fx:id="printBtn" mnemonicParsing="false" onAction="#print" text="_Print" />
               <MenuItem mnemonicParsing="false" onAction="#exit" text="_Close" />
             </items>
@@ -63,8 +64,12 @@
                 <MenuItem mnemonicParsing="false" onAction="#addS" text="Add" />
               <MenuItem mnemonicParsing="false" onAction="#delete" text="Delete" />
                   <MenuItem mnemonicParsing="false" onAction="#update" text="Update" />
-                  <MenuItem mnemonicParsing="false" onAction="#modifyT" text="Modify Publication type table" />
-                  <MenuItem mnemonicParsing="false" onAction="#modifyF" text="Modify Field of study table" />
+                  <Menu mnemonicParsing="false" text="Modifiy">
+                    <items>
+                        <MenuItem mnemonicParsing="false" onAction="#modifyF" text="Field of study table" />
+                        <MenuItem mnemonicParsing="false" onAction="#modifyT" text="Publication type table" />
+                    </items>
+                  </Menu>
             </items>
           </Menu>
           <Menu mnemonicParsing="false" text="_Help">

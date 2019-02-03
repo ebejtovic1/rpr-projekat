@@ -52,30 +52,30 @@
       </TableView>
       <MenuBar prefHeight="32.0" prefWidth="1300.0" GridPane.columnSpan="2">
         <menus>
-          <Menu mnemonicParsing="false" text="_File">
+          <Menu text="_File">
             <items>
-                  <MenuItem mnemonicParsing="false" onAction="#save" text="Save" />
-                  <MenuItem fx:id="printBtn" mnemonicParsing="false" onAction="#print" text="_Print" />
-              <MenuItem mnemonicParsing="false" onAction="#exit" text="_Close" />
-                  <MenuItem mnemonicParsing="false" onAction="#open" text="open" />
+                  <MenuItem onAction="#save" text="_Save" />
+                  <MenuItem onAction="#open" text="_Open" />
+                  <MenuItem fx:id="printBtn" onAction="#print" text="_Print" />
+              <MenuItem onAction="#exit" text="_Close" />
             </items>
           </Menu>
-          <Menu mnemonicParsing="false" text="_Edit">
+          <Menu text="_Edit">
             <items>
-                <MenuItem mnemonicParsing="false" onAction="#addS" text="Add" />
-              <MenuItem mnemonicParsing="false" onAction="#delete" text="Delete" />
-                  <MenuItem mnemonicParsing="false" onAction="#update" text="Update" />
-                  <Menu mnemonicParsing="false" text="Modifiy">
+                <MenuItem onAction="#addS" text="_Add" />
+              <MenuItem onAction="#delete" text="_Delete" />
+                  <MenuItem onAction="#update" text="_Update" />
+                  <Menu text="_Modifiy">
                     <items>
-                        <MenuItem mnemonicParsing="false" onAction="#modifyF" text="Field of study table" />
-                        <MenuItem mnemonicParsing="false" onAction="#modifyT" text="Publication type table" />
+                        <MenuItem onAction="#modifyF" text="Fiel_d of study table" />
+                        <MenuItem onAction="#modifyT" text="_Publication type table" />
                     </items>
                   </Menu>
             </items>
           </Menu>
-          <Menu mnemonicParsing="false" text="_Help">
+          <Menu text="_Help">
             <items>
-              <MenuItem mnemonicParsing="false" text="About" />
+              <MenuItem text="A_bout" />
             </items>
           </Menu>
         </menus>

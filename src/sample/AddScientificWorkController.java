@@ -2,10 +2,10 @@ package sample;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
-import javafx.scene.control.ComboBox;
-import javafx.scene.control.Spinner;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
+
+import java.util.NoSuchElementException;
+import java.util.Optional;
 
 
 public class AddScientificWorkController {
@@ -74,6 +74,19 @@ public class AddScientificWorkController {
             int value = (Integer) year.getValue();
             int value1 = (Integer) citations.getValue();
             dao.updateScien(title.getText(),author.getText(),field,journal.getText(),p,value,value1,aff.getText(),id);
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("Information");
+            alert.setHeaderText(null);
+            alert.setContentText("Scientific work successfully updated");
+            Optional<ButtonType> action= alert.showAndWait();
+            try{
+                if(action.get().equals(ButtonType.OK)){
+                    alert.close();
+                }}
+            catch(NoSuchElementException z){
+                return;
+            }
+            return;
         }
         else{
         ScientificWorksDAO dao=ScientificWorksDAO.getInstance();
@@ -89,7 +102,20 @@ public class AddScientificWorkController {
             }
         int value = (Integer) year.getValue();
         int value1 = (Integer) citations.getValue();
-        dao.addScien(title.getText(),author.getText(),field,journal.getText(),p,value,value1,aff.getText());}
+        dao.addScien(title.getText(),author.getText(),field,journal.getText(),p,value,value1,aff.getText());
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("Information");
+            alert.setHeaderText(null);
+            alert.setContentText("Scientific work successfully added");
+            Optional<ButtonType> action= alert.showAndWait();
+            try{
+                if(action.get().equals(ButtonType.OK)){
+                    alert.close();
+                }}
+            catch(NoSuchElementException z){
+                return;
+            }
+            return;}
 
     }
 

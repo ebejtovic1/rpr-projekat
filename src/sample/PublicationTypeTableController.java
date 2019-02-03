@@ -98,6 +98,19 @@ public class PublicationTypeTableController {
         model.reload();
         initialize();
         textField1.clear();
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle("Information");
+        alert.setHeaderText(null);
+        alert.setContentText("Publication type successfully added");
+        Optional<ButtonType> action= alert.showAndWait();
+        try{
+            if(action.get().equals(ButtonType.OK)){
+                alert.close();
+            }}
+        catch(NoSuchElementException z){
+            return;
+        }
+        return;
     }
 
     public void update (ActionEvent actionEvent){

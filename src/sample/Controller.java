@@ -295,6 +295,7 @@ public class Controller {
                 model.getScWork().clear();
                 model.reload();
                 reload();
+
             }
         });
     }
@@ -306,7 +307,7 @@ public class Controller {
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setTitle("Information");
         alert.setHeaderText(null);
-        alert.setContentText("Scientific work successfully added");
+        alert.setContentText("Field of study successfully added");
         Optional<ButtonType> action= alert.showAndWait();
         try{
             if(action.get().equals(ButtonType.OK)){
@@ -355,6 +356,19 @@ public class Controller {
         ScientificWorksDAO dao=ScientificWorksDAO.getInstance();
         dao.addTypeP(textField1.getText());
         textField1.clear();
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle("Information");
+        alert.setHeaderText(null);
+        alert.setContentText("Publication type successfully added");
+        Optional<ButtonType> action= alert.showAndWait();
+        try{
+            if(action.get().equals(ButtonType.OK)){
+                alert.close();
+            }}
+        catch(NoSuchElementException z){
+            return;
+        }
+        return;
     }
 
     public void delete (ActionEvent actionEvent)throws NoSelectedExeption {

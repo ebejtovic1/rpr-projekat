@@ -13,7 +13,7 @@ public class ScientificWorksDAO {
     private static ScientificWorksDAO instance;
 
     private Connection conn;
-    private PreparedStatement selectAll, updateScien, getFieldQuery, getTypeQuery, addField, addType, addScien, maxIdField, maxIdType, maxIdScien, getIdFieldQuery, getIdTypeQuery, deleteSW ;
+    private PreparedStatement selectAll,deleteFS, setNullQuery, setNullQuery1, selectAllField, updateScien, selectAllType, getFieldQuery, getTypeQuery, addField, addType, addScien, maxIdField, maxIdType, maxIdScien, getIdFieldQuery, getIdTypeQuery, deleteSW, deletePT ;
 
     public static ScientificWorksDAO getInstance(){
         if(instance==null)instance= new ScientificWorksDAO();
@@ -40,6 +40,10 @@ public class ScientificWorksDAO {
             }
         }
         try {
+            selectAllType=conn.prepareStatement("SELECT* FROM Publication_Type");
+            setNullQuery=conn.prepareStatement("UPDATE Scientific_work SET FieldOfStudy=null WHERE FieldOfStudy=?");
+            setNullQuery1=conn.prepareStatement("UPDATE Scientific_work SET PublicationType=null WHERE PublicationType=?");
+            selectAllField=conn.prepareStatement("SELECT* FROM Field_of_study");
             getFieldQuery=conn.prepareStatement("SELECT* FROM Field_of_study WHERE ID=?");
             getTypeQuery=conn.prepareStatement("SELECT* FROM Publication_Type WHERE ID=?");
             addField=conn.prepareStatement("INSERT INTO Field_of_study VALUES(?,?)");
@@ -52,6 +56,8 @@ public class ScientificWorksDAO {
             getIdFieldQuery=conn.prepareStatement("SELECT id FROM Field_of_study WHERE Title=?");
             getIdTypeQuery=conn.prepareStatement("SELECT id FROM Publication_Type WHERE typee=?");
             deleteSW=conn.prepareStatement("DELETE FROM Scientific_work WHERE id=?");
+            deletePT=conn.prepareStatement("DELETE FROM Publication_Type WHERE id=?");
+            deleteFS=conn.prepareStatement("DELETE FROM Field_of_study WHERE id=?");
 
         } catch (SQLException e) {
             e.printStackTrace();
@@ -195,6 +201,24 @@ public class ScientificWorksDAO {
 
     }
 
+    public void deletePT(int id){
+        try {
+            deletePT.setInt(1,id);
+            deletePT.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void deleteFS(int id){
+        try {
+            deleteFS.setInt(1,id);
+            deleteFS.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
     public void addScien(String title, String autor, int field, String journal, int publ, int year, int citations, String aff){
         try {
             ResultSet rs=maxIdScien.executeQuery();
@@ -235,6 +259,50 @@ public class ScientificWorksDAO {
         }
     }
 
+    public ObservableList<PublicationType> getAllType(){
+        ObservableList<PublicationType> SW= FXCollections.observableArrayList();
+        try {
+            ResultSet rs= selectAllType.executeQuery();
+            while(rs.next()){
+                PublicationType ssw=new PublicationType(rs.getInt(1),rs.getString(2));
+                SW.add(ssw);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return SW;
+    }
+    public ObservableList<FieldOfStudy> getAllField(){
+        ObservableList<FieldOfStudy> SW= FXCollections.observableArrayList();
+        try {
+            ResultSet rs= selectAllField.executeQuery();
+            while(rs.next()){
+                FieldOfStudy ssw=new FieldOfStudy(rs.getInt(1),rs.getString(2));
+                SW.add(ssw);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return SW;
+    }
+
+    public void setNull(int id){
+        try {
+            setNullQuery.setInt(1,id);
+            setNullQuery.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void setNull1(int id){
+        try {
+            setNullQuery1.setInt(1,id);
+            setNullQuery1.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
 
 
 

@@ -63,6 +63,8 @@
                 <MenuItem mnemonicParsing="false" onAction="#addS" text="Add" />
               <MenuItem mnemonicParsing="false" onAction="#delete" text="Delete" />
                   <MenuItem mnemonicParsing="false" onAction="#update" text="Update" />
+                  <MenuItem mnemonicParsing="false" onAction="#modifyT" text="Modify Publication type table" />
+                  <MenuItem mnemonicParsing="false" onAction="#modifyF" text="Modify Field of study table" />
             </items>
           </Menu>
           <Menu mnemonicParsing="false" text="_Help">
@@ -91,13 +93,13 @@
                </BorderPane.margin></TextField>
          </center>
          <top>
-            <Label maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="31.0" prefWidth="160.0" text="Add new field of study" BorderPane.alignment="CENTER">
+            <Label maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="57.0" prefWidth="215.0" text="       Add new field of study " textAlignment="RIGHT" BorderPane.alignment="CENTER">
 
                <padding>
                   <Insets bottom="32.0" />
                </padding>
                <font>
-                  <Font name="System Bold" size="14.0" />
+                  <Font size="16.0" />
                </font>
                <BorderPane.margin>
                   <Insets top="10.0" />
@@ -116,7 +118,7 @@
          <left>
             <Label prefHeight="21.0" prefWidth="55.0" text="Title:" textAlignment="CENTER" BorderPane.alignment="CENTER">
                <font>
-                  <Font name="System Bold" size="15.0" />
+                  <Font size="16.0" />
                </font>
                <padding>
                   <Insets left="5.0" />
@@ -140,7 +142,7 @@
                   <Insets bottom="32.0" />
                </padding>
                <font>
-                  <Font name="System Bold" size="14.0" />
+                  <Font size="16.0" />
                </font>
                <BorderPane.margin>
                   <Insets top="10.0" />
@@ -157,7 +159,7 @@
          <left>
             <Label prefHeight="21.0" prefWidth="55.0" text="Type:" textAlignment="CENTER" BorderPane.alignment="CENTER">
                <font>
-                  <Font name="System Bold" size="15.0" />
+                  <Font size="16.0" />
                </font>
                <padding>
                   <Insets left="5.0" />

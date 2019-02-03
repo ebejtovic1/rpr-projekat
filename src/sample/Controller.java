@@ -2,7 +2,6 @@ package sample;
 
 import javafx.beans.property.*;
 import javafx.beans.value.ObservableValue;
-import javafx.collections.ObservableSet;
 import javafx.collections.transformation.FilteredList;
 import javafx.collections.transformation.SortedList;
 import javafx.event.ActionEvent;
@@ -15,13 +14,12 @@ import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.Pane;
-import javafx.scene.transform.Scale;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import javafx.stage.WindowEvent;
 import javafx.util.Callback;
-
 import java.io.IOException;
+import java.util.NoSuchElementException;
 import java.util.Optional;
 
 public class Controller {
@@ -41,7 +39,6 @@ public class Controller {
     public  TextField textField;
     public  TextField textField1;
     public  TextField textField2;
-    public BorderPane hbox;
 
     @FXML
     private void initialize() {
@@ -51,13 +48,18 @@ public class Controller {
 
         field.setCellValueFactory(new Callback<TableColumn.CellDataFeatures<ScientificWork, String>, ObservableValue<String>>() {
             public ObservableValue<String> call(TableColumn.CellDataFeatures<ScientificWork, String> p) {
+                if(p.getValue().getFieldOfStudy()!=null)
                 return new SimpleStringProperty(p.getValue().getFieldOfStudy().getTitle());
+                return new SimpleStringProperty(" ");
             }
+
         });
 
         type.setCellValueFactory(new Callback<TableColumn.CellDataFeatures<ScientificWork, String>, ObservableValue<String>>() {
             public ObservableValue<String> call(TableColumn.CellDataFeatures<ScientificWork, String> p) {
+                if(p.getValue().getPublicationType()!=null)
                 return new SimpleStringProperty(p.getValue().getPublicationType().getType());
+                return new SimpleStringProperty(" ");
             }
         });
 
@@ -193,19 +195,33 @@ public class Controller {
     }
 
     public void delete (ActionEvent actionEvent)throws NoSelectedExeption {
+
         try {
             int id = table.getSelectionModel().getSelectedItem().getId();
-            dao.delete(id);
-            model.getScWork().clear();
-            model.reload();
-            initialize();
+
+            Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+            alert.setTitle("Confirmation");
+            alert.setHeaderText(null);
+            alert.setContentText("Are you sure?");
+            Optional<ButtonType> action= alert.showAndWait();
+            if(action.get()== ButtonType.OK){
+                dao.delete(id);
+                model.getScWork().clear();
+                model.reload();
+                initialize();
+            }
+
         } catch (Exception e) {
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("Error");
             alert.setHeaderText("No selected item");
             Optional<ButtonType> action= alert.showAndWait();
-            if(action.get()== ButtonType.OK){
+            try{
+            if(action.get().equals(ButtonType.OK)){
                 alert.close();
+            }}
+            catch(NoSuchElementException z){
+                return;
             }
             return;
         }
@@ -224,10 +240,16 @@ public class Controller {
             alert.setTitle("Error");
             alert.setHeaderText("No selected item");
             Optional<ButtonType> action= alert.showAndWait();
-            if(action.get()== ButtonType.OK){
-                alert.close();
+            try{
+                if(action.get().equals(ButtonType.OK)){
+                    alert.close();
+                }}
+            catch(NoSuchElementException z){
+                return;
             }
             return;
+
+
         }
         stage.show();
         AddScientificWorkController ctrl = loader1.getController();
@@ -259,4 +281,41 @@ public class Controller {
                 }
             });
         }
+
+
+    public void modifyT(ActionEvent actionEvent){
+        FXMLLoader loader1 = new FXMLLoader(getClass().getResource("PublicationTypeTable.fxml"));
+        Stage stage = new Stage(StageStyle.DECORATED);
+        try { stage.setScene(new Scene((Pane) loader1.load())
+        );
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        stage.show();
+        stage.setOnCloseRequest(new EventHandler<WindowEvent>() {
+            public void handle(WindowEvent we) {
+                model.getScWork().clear();
+                model.reload();
+                initialize();
+            }
+        });
+    }
+    public void modifyF(ActionEvent actionEvent){
+        FXMLLoader loader1 = new FXMLLoader(getClass().getResource("FieldOfStudyTable.fxml"));
+        Stage stage = new Stage(StageStyle.DECORATED);
+        try { stage.setScene(new Scene((Pane) loader1.load())
+        );
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        stage.show();
+
+        stage.setOnCloseRequest(new EventHandler<WindowEvent>() {
+            public void handle(WindowEvent we) {
+                model.getScWork().clear();
+                model.reload();
+                initialize();
+            }
+        });
+    }
 }

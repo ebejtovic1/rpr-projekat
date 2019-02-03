@@ -292,6 +292,19 @@ public class Controller {
         ScientificWorksDAO dao=ScientificWorksDAO.getInstance();
         dao.addFieldS(textField2.getText());
         textField2.clear();
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle("Information");
+        alert.setHeaderText(null);
+        alert.setContentText("Scientific work successfully added");
+        Optional<ButtonType> action= alert.showAndWait();
+        try{
+            if(action.get().equals(ButtonType.OK)){
+                alert.close();
+            }}
+        catch(NoSuchElementException z){
+            return;
+        }
+        return;
     }
 
     public void addP(ActionEvent actionEvent){

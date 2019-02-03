@@ -87,23 +87,22 @@
          </GridPane.margin></TextField>
       <BorderPane fx:id="hbox" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="128.0" prefWidth="305.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
          <center>
-            <TextField fx:id="textField2" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" prefHeight="29.0" prefWidth="234.0" BorderPane.alignment="CENTER">
+            <TextField fx:id="textField2" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" prefHeight="29.0" prefWidth="234.0" BorderPane.alignment="TOP_CENTER">
                <BorderPane.margin>
-                  <Insets bottom="15.0" />
+                  <Insets />
                </BorderPane.margin></TextField>
          </center>
          <top>
-            <Label maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="57.0" prefWidth="215.0" text="           New field of study " textFill="LIGHTGRAY" BorderPane.alignment="CENTER">
-
-               <padding>
-                  <Insets bottom="32.0" />
-               </padding>
+            <Label maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="24.0" prefWidth="215.0" text="           New field of study " textFill="LIGHTGRAY" BorderPane.alignment="CENTER">
                <font>
                   <Font size="16.5" />
                </font>
                <BorderPane.margin>
-                  <Insets top="10.0" />
+                  <Insets />
                </BorderPane.margin>
+               <padding>
+                  <Insets bottom="20.0" />
+               </padding>
             </Label>
          </top>
          <GridPane.margin>
@@ -127,29 +126,23 @@
                   <Insets left="5.0" />
                </padding>
                <BorderPane.margin>
-                  <Insets bottom="15.0" />
+                  <Insets bottom="5.0" />
                </BorderPane.margin>
             </Label>
          </left>
       </BorderPane>
       <BorderPane fx:id="hbox1" layoutX="1225.0" layoutY="-42.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="128.0" prefWidth="305.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
-         <center>
-            <TextField fx:id="textField1" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" prefHeight="29.0" prefWidth="234.0" BorderPane.alignment="CENTER">
-               <BorderPane.margin>
-                  <Insets bottom="15.0" />
-               </BorderPane.margin></TextField>
-         </center>
          <top>
-            <Label fx:id="labelica" maxHeight="-Infinity" maxWidth="-Infinity" minWidth="-Infinity" prefHeight="56.0" prefWidth="158.0" text="New publication type" textFill="LIGHTGRAY" BorderPane.alignment="CENTER">
-               <padding>
-                  <Insets bottom="32.0" />
-               </padding>
+            <Label fx:id="labelica" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="32.0" prefWidth="158.0" text="New publication type" textFill="LIGHTGRAY" BorderPane.alignment="TOP_CENTER">
                <font>
                   <Font size="16.5" />
                </font>
                <BorderPane.margin>
-                  <Insets top="10.0" />
+                  <Insets bottom="10.0" />
                </BorderPane.margin>
+               <padding>
+                  <Insets bottom="10.0" />
+               </padding>
             </Label>
          </top>
          <bottom>
@@ -171,13 +164,19 @@
                   <Insets left="5.0" />
                </padding>
                <BorderPane.margin>
-                  <Insets bottom="15.0" />
+                  <Insets />
                </BorderPane.margin>
             </Label>
          </left>
          <GridPane.margin>
             <Insets bottom="70.0" left="5.0" />
          </GridPane.margin>
+         <center>
+            <TextField fx:id="textField1" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" prefHeight="31.0" prefWidth="234.0" BorderPane.alignment="BOTTOM_CENTER">
+               <BorderPane.margin>
+                  <Insets />
+               </BorderPane.margin></TextField>
+         </center>
       </BorderPane>
       <BorderPane fx:id="hbox2" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="144.0" prefWidth="306.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
          <top>

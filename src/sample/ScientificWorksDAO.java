@@ -13,7 +13,7 @@ public class ScientificWorksDAO {
     private static ScientificWorksDAO instance;
 
     private Connection conn;
-    private PreparedStatement selectAll,deleteFS, setNullQuery, setNullQuery1, selectAllField, updateScien, selectAllType, getFieldQuery, getTypeQuery, addField, addType, addScien, maxIdField, maxIdType, maxIdScien, getIdFieldQuery, getIdTypeQuery, deleteSW, deletePT ;
+    private PreparedStatement updateTypeQuery, selectAll,deleteFS,updateFieldQuery, setNullQuery, setNullQuery1, selectAllField, updateScien, selectAllType, getFieldQuery, getTypeQuery, addField, addType, addScien, maxIdField, maxIdType, maxIdScien, getIdFieldQuery, getIdTypeQuery, deleteSW, deletePT ;
 
     public static ScientificWorksDAO getInstance(){
         if(instance==null)instance= new ScientificWorksDAO();
@@ -40,6 +40,8 @@ public class ScientificWorksDAO {
             }
         }
         try {
+            updateTypeQuery=conn.prepareStatement("UPDATE Publication_type SET typee=? WHERE id=?");
+            updateFieldQuery=conn.prepareStatement("UPDATE Field_of_study SET title=? WHERE id=?");
             selectAllType=conn.prepareStatement("SELECT* FROM Publication_Type");
             setNullQuery=conn.prepareStatement("UPDATE Scientific_work SET FieldOfStudy=null WHERE FieldOfStudy=?");
             setNullQuery1=conn.prepareStatement("UPDATE Scientific_work SET PublicationType=null WHERE PublicationType=?");
@@ -304,6 +306,25 @@ public class ScientificWorksDAO {
         }
     }
 
+    public void updateField(String title, int id){
+        try {
+            updateFieldQuery.setString(1, title);
+            updateFieldQuery.setInt(2,id);
+            updateFieldQuery.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
 
+    }
 
+    public void updateType(String title, int id){
+        try {
+            updateTypeQuery.setString(1, title);
+            updateTypeQuery.setInt(2,id);
+            updateTypeQuery.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+    }
 }

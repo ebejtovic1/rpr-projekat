@@ -8,7 +8,6 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
-
 import java.util.NoSuchElementException;
 import java.util.Optional;
 
@@ -20,6 +19,7 @@ public class PublicationTypeTableController {
     public TableColumn<PublicationType, SimpleStringProperty>type;
     public TextField textField;
     public TextField textField1;
+    public TextField textField2;
 
 
     @FXML
@@ -40,6 +40,20 @@ public class PublicationTypeTableController {
         SortedList<PublicationType> sortedData = new SortedList<>(flPerson);
         sortedData.comparatorProperty().bind(table.comparatorProperty());
         table.setItems(sortedData);
+
+        table.setRowFactory(tv -> {
+            TableRow<PublicationType> row = new TableRow<>();
+            row.setOnMouseClicked(event -> {
+                if (event.getClickCount() == 1 && (! row.isEmpty()) ) {
+                    textField2.textProperty().bindBidirectional(new SimpleStringProperty(table.getSelectionModel().getSelectedItem().getType()));
+                }
+            });
+            return row ;
+        });
+        textField1.setOnMouseClicked(event -> {
+            textField2.clear();
+            table.getSelectionModel().clearSelection();
+        });
     }
 
     public void delete (ActionEvent actionEvent)throws NoSelectedExeption {
@@ -58,6 +72,7 @@ public class PublicationTypeTableController {
                 model.getScWork().clear();
                 model.reload();
                 initialize();
+                textField2.clear();
             }
 
         } catch (Exception e) {
@@ -77,6 +92,14 @@ public class PublicationTypeTableController {
     }
     public void add (ActionEvent actionEvent){
         dao.addTypeP(textField1.getText());
+        model.getScWork().clear();
+        model.reload();
+        initialize();
+        textField1.clear();
+    }
+
+    public void update (ActionEvent actionEvent){
+        dao.updateType(textField2.getText(), table.getSelectionModel().getSelectedItem().getId());
         model.getScWork().clear();
         model.reload();
         initialize();

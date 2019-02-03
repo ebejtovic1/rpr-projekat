@@ -3,8 +3,6 @@ package sample;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
-import java.lang.reflect.Field;
-
 public class FieldOfStudyModel {
 
     public ObservableList<FieldOfStudy> getScWork() {

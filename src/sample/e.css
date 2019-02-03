@@ -1,15 +1,20 @@
 #hbox{
-    -fx-border-color: black;
-    -fx-border-width: 0.3;
+    -fx-border-color: lightgrey;
+    -fx-border-width: 0.5;
     -fx-border-radius: 5;
 }
 #hbox1{
-    -fx-border-color: black;
-    -fx-border-width: 0.3;
+
+    -fx-border-color: lightgrey;
+    -fx-border-width: 0.5;
     -fx-border-radius: 5;
 }
 #hbox2{
-    -fx-border-color: black;
-    -fx-border-width: 0.3;
+    -fx-border-color: lightgrey;
+    -fx-border-width: 0.5;
     -fx-border-radius: 5;
+}
+
+#grid{
+-fx-background-color: #404144;
 }

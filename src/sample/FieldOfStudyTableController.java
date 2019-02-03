@@ -82,7 +82,8 @@ public class FieldOfStudyTableController {
         } catch (Exception e) {
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("Error");
-            alert.setHeaderText("No selected item");
+            alert.setHeaderText(null);
+            alert.setContentText("No selected item");
             Optional<ButtonType> action= alert.showAndWait();
             try{
                 if(action.get().equals(ButtonType.OK)){
@@ -102,10 +103,32 @@ public class FieldOfStudyTableController {
         textField1.clear();
     }
     public void update(ActionEvent actionEvent){
+
+        if(table.getSelectionModel().getSelectedItem()==null){
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Error");
+            alert.setHeaderText(null);
+            alert.setContentText("No selected item");
+            Optional<ButtonType> action= alert.showAndWait();
+            try{
+                if(action.get().equals(ButtonType.OK)){
+                    alert.close();
+                }}
+            catch(NoSuchElementException z){
+                return;
+            }
+            return;
+
+
+        }
+        else{
+
+
         dao.updateField(textField2.getText(), table.getSelectionModel().getSelectedItem().getId());
         model.getScWork().clear();
         model.reload();
         initialize();
         textField1.clear();
+        }
     }
 }

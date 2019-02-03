@@ -39,6 +39,7 @@ public class Controller {
     public  TextField textField1;
     public  TextField textField2;
 
+
     @FXML
     private void initialize() {
         id.setCellValueFactory(new PropertyValueFactory<ScientificWork, SimpleIntegerProperty>("id"));
@@ -148,6 +149,112 @@ public class Controller {
         table.setItems(sortedData);
     }
 
+    public void reload(){
+        id.setCellValueFactory(new PropertyValueFactory<ScientificWork, SimpleIntegerProperty>("id"));
+        title.setCellValueFactory(new PropertyValueFactory<ScientificWork, SimpleStringProperty>("Title"));
+        author.setCellValueFactory(new PropertyValueFactory<ScientificWork, SimpleStringProperty>("Author"));
+
+        field.setCellValueFactory(new Callback<TableColumn.CellDataFeatures<ScientificWork, String>, ObservableValue<String>>() {
+            public ObservableValue<String> call(TableColumn.CellDataFeatures<ScientificWork, String> p) {
+                if(p.getValue().getFieldOfStudy()!=null)
+                    return new SimpleStringProperty(p.getValue().getFieldOfStudy().getTitle());
+                return new SimpleStringProperty(" ");
+            }
+
+        });
+
+        type.setCellValueFactory(new Callback<TableColumn.CellDataFeatures<ScientificWork, String>, ObservableValue<String>>() {
+            public ObservableValue<String> call(TableColumn.CellDataFeatures<ScientificWork, String> p) {
+                if(p.getValue().getPublicationType()!=null)
+                    return new SimpleStringProperty(p.getValue().getPublicationType().getType());
+                return new SimpleStringProperty(" ");
+            }
+        });
+
+        journal.setCellValueFactory(new PropertyValueFactory<ScientificWork, SimpleStringProperty>("Journal"));
+        year.setCellValueFactory(new PropertyValueFactory<ScientificWork, SimpleIntegerProperty>("YearOfIssue"));
+        citations.setCellValueFactory(new PropertyValueFactory<ScientificWork, SimpleIntegerProperty>("Citations"));
+        affiliation.setCellValueFactory(new PropertyValueFactory<ScientificWork, SimpleStringProperty>("Affiliation"));
+        FilteredList<ScientificWork> flPerson = new FilteredList(model.getScWork(), p -> true);
+
+
+        title.setSortable(true);
+        author.setSortable(true);
+        choiceBox.getSelectionModel().selectedItemProperty().addListener((obs, oldVal, newVal) ->
+        {
+            if (newVal != null)
+            {
+                textField.setText("");
+                flPerson.setPredicate(null);
+            }
+        });
+
+        textField.setPromptText("Search here...");
+        textField.setOnKeyReleased(keyEvent ->
+        {
+            switch (choiceBox.getValue())
+            {
+                case "By title":
+                    flPerson.setPredicate(p -> p.getTitle().toLowerCase().contains(textField.getText().toLowerCase().trim()));
+                    break;
+
+                case "By author":
+                    flPerson.setPredicate(p -> p.getAuthor().toLowerCase().contains(textField.getText().toLowerCase().trim()));
+                    break;
+
+                case "By field of study":
+                    flPerson.setPredicate(p -> p.getFieldOfStudy().getTitle().toLowerCase().contains(textField.getText().toLowerCase().trim()));
+                    break;
+
+                case "By publication type":
+                    flPerson.setPredicate(p -> p.getPublicationType().getType().toLowerCase().contains(textField.getText().toLowerCase().trim()));
+                    break;
+
+                case "By year of issue":
+                    flPerson.setPredicate(p -> String.valueOf(p.getYearOfIssue()).toLowerCase().contains(textField.getText().toLowerCase().trim()));
+                    break;
+
+                case "By ID":
+                    flPerson.setPredicate(p -> String.valueOf(p.getId()).toLowerCase().contains(textField.getText().toLowerCase().trim()));
+                    break;
+
+                case "By affiliation":
+                    flPerson.setPredicate(p -> p.getAffiliation()!=null && p.getAffiliation().toLowerCase().contains(textField.getText().toLowerCase().trim()));
+                    break;
+
+                case "By citations":
+                    flPerson.setPredicate(p -> String.valueOf(p.getCitations()).toLowerCase().contains(textField.getText().toLowerCase().trim()));
+                    break;
+
+                case "By journal":
+                    flPerson.setPredicate(p -> p.getJournal()!=null && p.getJournal().toLowerCase().contains(textField.getText().toLowerCase().trim()));
+                    break;
+
+                case "All":
+                    flPerson.setPredicate(p -> {
+                        if(String.valueOf(p.getYearOfIssue()).toLowerCase().contains(textField.getText().toLowerCase().trim()))return true;
+                        if(String.valueOf(p.getId()).toLowerCase().contains(textField.getText().toLowerCase().trim()))return true;
+                        if(String.valueOf(p.getCitations()).toLowerCase().contains(textField.getText().toLowerCase().trim()))return true;
+                        else if(p.getTitle().toLowerCase().contains(textField.getText().toLowerCase().trim()))return true;
+                        else if( p.getAuthor().toLowerCase().contains(textField.getText().toLowerCase().trim()))return true;
+                        else if(p.getFieldOfStudy().getTitle().toLowerCase().contains(textField.getText().toLowerCase().trim()))return true;
+                        else if(p.getPublicationType().getType().toLowerCase().contains(textField.getText().toLowerCase().trim()))return true;
+                        else if(p.getAffiliation()!=null && p.getAffiliation().toLowerCase().contains(textField.getText().toLowerCase().trim()))return true;
+                        else if(p.getJournal()!=null && p.getJournal().toLowerCase().contains(textField.getText().toLowerCase().trim()))return true;
+
+                        return false;
+                    });
+                    break;
+            }
+        });
+
+
+        SortedList<ScientificWork> sortedData = new SortedList<>(flPerson);
+        sortedData.comparatorProperty().bind(table.comparatorProperty());
+        table.setItems(sortedData);
+
+    }
+
     public void print(ActionEvent actionEvent) {
 
         PrinterJob job = PrinterJob.createPrinterJob();
@@ -176,7 +283,7 @@ public class Controller {
             public void handle(WindowEvent we) {
                 model.getScWork().clear();
                 model.reload();
-                initialize();
+                reload();
             }
         });
     }
@@ -207,13 +314,14 @@ public class Controller {
                 dao.delete(id);
                 model.getScWork().clear();
                 model.reload();
-                initialize();
+                reload();
             }
 
         } catch (Exception e) {
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("Error");
-            alert.setHeaderText("No selected item");
+            alert.setHeaderText(null);
+            alert.setContentText("No selected item");
             Optional<ButtonType> action= alert.showAndWait();
             try{
             if(action.get().equals(ButtonType.OK)){
@@ -237,7 +345,8 @@ public class Controller {
         if(table.getSelectionModel().getSelectedItem()==null){
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("Error");
-            alert.setHeaderText("No selected item");
+            alert.setHeaderText(null);
+            alert.setContentText("No selected item");
             Optional<ButtonType> action= alert.showAndWait();
             try{
                 if(action.get().equals(ButtonType.OK)){
@@ -283,7 +392,7 @@ public class Controller {
                 public void handle(WindowEvent we) {
                     model.getScWork().clear();
                     model.reload();
-                    initialize();
+                    reload();
                 }
             });
         }
@@ -298,18 +407,20 @@ public class Controller {
             e.printStackTrace();
         }
         stage.setTitle("Publication type");
+        stage.setResizable(false);
         stage.show();
         stage.setOnCloseRequest(new EventHandler<WindowEvent>() {
             public void handle(WindowEvent we) {
                 model.getScWork().clear();
                 model.reload();
-                initialize();
+                reload();
             }
         });
     }
     public void modifyF(ActionEvent actionEvent){
         FXMLLoader loader1 = new FXMLLoader(getClass().getResource("FieldOfStudyTable.fxml"));
         Stage stage = new Stage(StageStyle.DECORATED);
+        stage.setResizable(false);
         try { stage.setScene(new Scene((Pane) loader1.load())
         );
         } catch (IOException e) {
@@ -322,7 +433,7 @@ public class Controller {
             public void handle(WindowEvent we) {
                 model.getScWork().clear();
                 model.reload();
-                initialize();
+                reload();
             }
         });
     }

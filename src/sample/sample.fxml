@@ -17,7 +17,7 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Font?>
 
-<GridPane alignment="center" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="510.0" prefWidth="1520.0" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller">
+<GridPane fx:id="grid" alignment="center" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="1520.0" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller">
     <stylesheets>
         <URL value="@e.css" />
     </stylesheets>
@@ -47,7 +47,7 @@
             <TableColumn fx:id="affiliation" prefWidth="190.0" resizable="false" text="Affiliation" />
         </columns>
          <GridPane.margin>
-            <Insets bottom="150.0" left="20.0" />
+            <Insets bottom="150.0" left="20.0" top="100.0" />
          </GridPane.margin>
       </TableView>
       <MenuBar prefHeight="32.0" prefWidth="1300.0" GridPane.columnSpan="2">
@@ -74,32 +74,32 @@
           </Menu>
         </menus>
          <GridPane.margin>
-            <Insets bottom="300.0" left="5.0" />
+            <Insets bottom="300.0" left="5.0" top="100.0" />
          </GridPane.margin>
       </MenuBar>
-      <ChoiceBox fx:id="choiceBox" prefHeight="31.0" prefWidth="150.0" GridPane.halignment="CENTER" GridPane.rowIndex="2">
+      <ChoiceBox fx:id="choiceBox" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="31.0" prefWidth="150.0" GridPane.halignment="CENTER" GridPane.rowIndex="2">
          <GridPane.margin>
-            <Insets right="200.0" />
+            <Insets right="200.0" top="100.0" />
          </GridPane.margin></ChoiceBox>
-      <TextField fx:id="textField" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="31.0" prefWidth="411.0" GridPane.rowIndex="2">
+      <TextField fx:id="textField" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="31.0" prefWidth="411.0" GridPane.rowIndex="2">
          <GridPane.margin>
-            <Insets left="20.0" />
+            <Insets left="20.0" top="100.0" />
          </GridPane.margin></TextField>
       <BorderPane fx:id="hbox" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="128.0" prefWidth="305.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
          <center>
-            <TextField fx:id="textField2" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" prefHeight="35.0" prefWidth="234.0" BorderPane.alignment="CENTER">
+            <TextField fx:id="textField2" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" prefHeight="29.0" prefWidth="234.0" BorderPane.alignment="CENTER">
                <BorderPane.margin>
                   <Insets bottom="15.0" />
                </BorderPane.margin></TextField>
          </center>
          <top>
-            <Label maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="57.0" prefWidth="215.0" text="       Add new field of study " textAlignment="RIGHT" BorderPane.alignment="CENTER">
+            <Label maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="57.0" prefWidth="215.0" text="           New field of study " textFill="LIGHTGRAY" BorderPane.alignment="CENTER">
 
                <padding>
                   <Insets bottom="32.0" />
                </padding>
                <font>
-                  <Font size="16.0" />
+                  <Font size="16.5" />
                </font>
                <BorderPane.margin>
                   <Insets top="10.0" />
@@ -107,16 +107,19 @@
             </Label>
          </top>
          <GridPane.margin>
-            <Insets bottom="470.0" left="5.0" right="5.0" />
+            <Insets bottom="370.0" left="5.0" right="5.0" />
          </GridPane.margin>
          <bottom>
-            <Button mnemonicParsing="false" onAction="#addF" prefHeight="30.0" prefWidth="76.0" text="Add" BorderPane.alignment="CENTER">
+            <Button mnemonicParsing="false" onAction="#addF" prefHeight="35.0" prefWidth="91.0" text="Add" BorderPane.alignment="CENTER">
                <BorderPane.margin>
                   <Insets bottom="5.0" top="10.0" />
-               </BorderPane.margin></Button>
+               </BorderPane.margin>
+               <font>
+                  <Font size="15.5" />
+               </font></Button>
          </bottom>
          <left>
-            <Label prefHeight="21.0" prefWidth="55.0" text="Title:" textAlignment="CENTER" BorderPane.alignment="CENTER">
+            <Label prefHeight="21.0" prefWidth="55.0" text="Title:" textAlignment="CENTER" textFill="LIGHTGRAY" BorderPane.alignment="CENTER">
                <font>
                   <Font size="16.0" />
                </font>
@@ -131,18 +134,18 @@
       </BorderPane>
       <BorderPane fx:id="hbox1" layoutX="1225.0" layoutY="-42.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="128.0" prefWidth="305.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
          <center>
-            <TextField fx:id="textField1" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" prefHeight="35.0" prefWidth="234.0" BorderPane.alignment="CENTER">
+            <TextField fx:id="textField1" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" prefHeight="29.0" prefWidth="234.0" BorderPane.alignment="CENTER">
                <BorderPane.margin>
                   <Insets bottom="15.0" />
                </BorderPane.margin></TextField>
          </center>
          <top>
-            <Label maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="52.0" prefWidth="183.0" text="Add new publication type" BorderPane.alignment="CENTER">
+            <Label fx:id="labelica" maxHeight="-Infinity" maxWidth="-Infinity" minWidth="-Infinity" prefHeight="56.0" prefWidth="158.0" text="New publication type" textFill="LIGHTGRAY" BorderPane.alignment="CENTER">
                <padding>
                   <Insets bottom="32.0" />
                </padding>
                <font>
-                  <Font size="16.0" />
+                  <Font size="16.5" />
                </font>
                <BorderPane.margin>
                   <Insets top="10.0" />
@@ -150,14 +153,17 @@
             </Label>
          </top>
          <bottom>
-            <Button mnemonicParsing="false" onAction="#addP" prefHeight="30.0" prefWidth="76.0" text="Add" BorderPane.alignment="CENTER">
+            <Button mnemonicParsing="false" onAction="#addP" prefHeight="31.0" prefWidth="91.0" text="Add" BorderPane.alignment="CENTER">
                <BorderPane.margin>
                   <Insets bottom="5.0" top="10.0" />
                </BorderPane.margin>
+               <font>
+                  <Font size="15.5" />
+               </font>
             </Button>
          </bottom>
          <left>
-            <Label prefHeight="21.0" prefWidth="55.0" text="Type:" textAlignment="CENTER" BorderPane.alignment="CENTER">
+            <Label prefHeight="21.0" prefWidth="55.0" text="Type:" textAlignment="CENTER" textFill="LIGHTGRAY" BorderPane.alignment="CENTER">
                <font>
                   <Font size="16.0" />
                </font>
@@ -170,12 +176,12 @@
             </Label>
          </left>
          <GridPane.margin>
-            <Insets bottom="170.0" left="5.0" />
+            <Insets bottom="70.0" left="5.0" />
          </GridPane.margin>
       </BorderPane>
       <BorderPane fx:id="hbox2" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="144.0" prefWidth="306.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
          <top>
-            <Button maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#addS" prefHeight="35.0" prefWidth="270.0" text="Add new scientific work" BorderPane.alignment="CENTER">
+            <Button fx:id="addS" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#addS" prefHeight="35.0" prefWidth="270.0" text="Add new scientific work" BorderPane.alignment="CENTER">
                <BorderPane.margin>
                   <Insets top="10.0" />
                </BorderPane.margin>
@@ -185,13 +191,13 @@
             </Button>
          </top>
          <center>
-            <Button mnemonicParsing="false" onAction="#update" prefHeight="35.0" prefWidth="270.0" text="Update selected scientific work" BorderPane.alignment="CENTER">
+            <Button fx:id="updateS" mnemonicParsing="false" onAction="#update" prefHeight="35.0" prefWidth="270.0" text="Update selected scientific work" BorderPane.alignment="CENTER">
                <font>
                   <Font size="16.0" />
                </font></Button>
          </center>
          <bottom>
-            <Button mnemonicParsing="false" onAction="#delete" prefHeight="35.0" prefWidth="270.0" text="Delete selected scientific work" BorderPane.alignment="CENTER">
+            <Button fx:id="deleteS" mnemonicParsing="false" onAction="#delete" prefHeight="35.0" prefWidth="270.0" text="Delete selected scientific work" BorderPane.alignment="CENTER">
                <BorderPane.margin>
                   <Insets bottom="10.0" />
                </BorderPane.margin>
@@ -201,7 +207,7 @@
             </Button>
          </bottom>
          <GridPane.margin>
-            <Insets left="5.0" right="20.0" top="150.0" />
+            <Insets left="5.0" right="20.0" top="250.0" />
          </GridPane.margin>
       </BorderPane>
    </children>

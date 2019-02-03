@@ -331,6 +331,24 @@ public class Controller {
             System.out.println("Error: "+e);
         }
     }
+    public void open(ActionEvent actionEvent) {
+        ArrayList<ScientificWork>ucitaj=new ArrayList<ScientificWork>();
+        try {
+            XMLDecoder ulaz = new XMLDecoder(new FileInputStream("saved.xml"));
+            ucitaj = (ArrayList<ScientificWork>) ulaz.readObject();
+            ulaz.close();
+        } catch(Exception e) {
+            System.out.println("Greška: "+e);
+        }
+        dao.deleteAll();
+        for(ScientificWork novi: ucitaj){
+            dao.addScien(novi.getTitle(),novi.getAuthor(),novi.getFieldOfStudy().getId(),novi.getJournal(),novi.getPublicationType().getId(),novi.getYearOfIssue(),novi.getCitations(),novi.getAffiliation());
+        }
+        model.getScWork().clear();
+        model.reload();
+        reload();
+
+    }
 
 
     public void addP(ActionEvent actionEvent){

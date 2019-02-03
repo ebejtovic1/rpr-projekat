@@ -57,6 +57,7 @@
                   <MenuItem mnemonicParsing="false" onAction="#save" text="Save" />
                   <MenuItem fx:id="printBtn" mnemonicParsing="false" onAction="#print" text="_Print" />
               <MenuItem mnemonicParsing="false" onAction="#exit" text="_Close" />
+                  <MenuItem mnemonicParsing="false" onAction="#open" text="open" />
             </items>
           </Menu>
           <Menu mnemonicParsing="false" text="_Edit">

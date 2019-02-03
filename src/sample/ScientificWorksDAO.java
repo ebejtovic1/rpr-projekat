@@ -13,7 +13,7 @@ public class ScientificWorksDAO {
     private static ScientificWorksDAO instance;
 
     private Connection conn;
-    private PreparedStatement updateTypeQuery, selectAll,deleteFS,updateFieldQuery, setNullQuery, setNullQuery1, selectAllField, updateScien, selectAllType, getFieldQuery, getTypeQuery, addField, addType, addScien, maxIdField, maxIdType, maxIdScien, getIdFieldQuery, getIdTypeQuery, deleteSW, deletePT ;
+    private PreparedStatement deleteAll, updateTypeQuery, selectAll,deleteFS,updateFieldQuery, setNullQuery, setNullQuery1, selectAllField, updateScien, selectAllType, getFieldQuery, getTypeQuery, addField, addType, addScien, maxIdField, maxIdType, maxIdScien, getIdFieldQuery, getIdTypeQuery, deleteSW, deletePT ;
 
     public static ScientificWorksDAO getInstance(){
         if(instance==null)instance= new ScientificWorksDAO();
@@ -40,6 +40,7 @@ public class ScientificWorksDAO {
             }
         }
         try {
+            deleteAll=conn.prepareStatement("DELETE FROM Scientific_work");
             updateTypeQuery=conn.prepareStatement("UPDATE Publication_type SET typee=? WHERE id=?");
             updateFieldQuery=conn.prepareStatement("UPDATE Field_of_study SET title=? WHERE id=?");
             selectAllType=conn.prepareStatement("SELECT* FROM Publication_Type");
@@ -326,5 +327,13 @@ public class ScientificWorksDAO {
             e.printStackTrace();
         }
 
+    }
+
+    public void deleteAll() {
+        try {
+            deleteAll.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
     }
 }

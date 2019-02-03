@@ -8,8 +8,6 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
-import net.sf.jasperreports.components.map.Item;
-
 import java.util.NoSuchElementException;
 import java.util.Optional;
 

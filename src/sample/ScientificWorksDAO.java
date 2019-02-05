@@ -336,4 +336,8 @@ public class ScientificWorksDAO {
             e.printStackTrace();
         }
     }
+
+    public Connection getConn() {
+        return conn;
+    }
 }

@@ -17,10 +17,16 @@ import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import javafx.stage.WindowEvent;
 import javafx.util.Callback;
+import net.sf.jasperreports.engine.*;
+import net.sf.jasperreports.swing.JRViewer;
+
+import javax.swing.*;
 import java.beans.XMLDecoder;
 import java.beans.XMLEncoder;
 import java.io.*;
+import java.sql.Connection;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.NoSuchElementException;
 import java.util.Optional;
 
@@ -258,7 +264,7 @@ public class Controller {
 
     }
 
-    public void print(ActionEvent actionEvent) {
+   /* public void print(ActionEvent actionEvent) {
 
         PrinterJob job = PrinterJob.createPrinterJob();
         if (job != null && job.showPrintDialog(table.getScene().getWindow())) {
@@ -268,7 +274,7 @@ public class Controller {
             }
         }
         model.Ispisi();
-    }
+    }*/
 
     public void exit(ActionEvent actionEvent){
         System.exit(0);
@@ -499,5 +505,33 @@ public class Controller {
                 reload();
             }
         });
+    }
+
+    public class PrintReport extends JFrame {
+        public void showReport(Connection conn) throws JRException {
+            String reportSrcFile = getClass().getResource("/reports/Simple_Blue.jrxml").getFile();
+            String reportsDir = getClass().getResource("/reports/").getFile();
+
+            JasperReport jasperReport = JasperCompileManager.compileReport(reportSrcFile);
+            // Fields for resources path
+            HashMap<String, Object> parameters = new HashMap<String, Object>();
+            parameters.put("reportsDirPath", reportsDir);
+            ArrayList<HashMap<String, Object>> list = new ArrayList<HashMap<String, Object>>();
+            list.add(parameters);
+            JasperPrint print = JasperFillManager.fillReport(jasperReport, parameters, conn);
+            JRViewer viewer = new JRViewer(print);
+            viewer.setOpaque(true);
+            viewer.setVisible(true);
+            this.add(viewer);
+            this.setSize(1300, 1000);
+            this.setVisible(true);
+        }
+    }
+    public void print(ActionEvent actionEvent) {
+        try {
+            new PrintReport().showReport(dao.getConn());
+        } catch (JRException e1) {
+            e1.printStackTrace();
+        }
     }
 }

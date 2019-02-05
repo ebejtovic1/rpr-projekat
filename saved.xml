@@ -22,9 +22,6 @@
       </void>
      </object>
     </void>
-    <void property="id">
-     <int>1</int>
-    </void>
     <void property="publicationType">
      <object class="sample.PublicationType">
       <void property="id">
@@ -65,7 +62,7 @@
      </object>
     </void>
     <void property="id">
-     <int>2</int>
+     <int>1</int>
     </void>
     <void property="journal">
      <string>ACM Transactions on IS</string>
@@ -110,7 +107,7 @@
      </object>
     </void>
     <void property="id">
-     <int>3</int>
+     <int>2</int>
     </void>
     <void property="publicationType">
      <object class="sample.PublicationType">
@@ -152,7 +149,7 @@
      </object>
     </void>
     <void property="id">
-     <int>4</int>
+     <int>3</int>
     </void>
     <void property="publicationType">
      <object class="sample.PublicationType">
@@ -194,7 +191,7 @@
      </object>
     </void>
     <void property="id">
-     <int>5</int>
+     <int>4</int>
     </void>
     <void property="journal">
      <string>Jornual of Power Sources</string>
@@ -239,7 +236,7 @@
      </object>
     </void>
     <void property="id">
-     <int>6</int>
+     <int>5</int>
     </void>
     <void property="journal">
      <string>The Lancet</string>
@@ -284,7 +281,7 @@
      </object>
     </void>
     <void property="id">
-     <int>7</int>
+     <int>6</int>
     </void>
     <void property="publicationType">
      <object class="sample.PublicationType">
@@ -326,7 +323,7 @@
      </object>
     </void>
     <void property="id">
-     <int>10</int>
+     <int>7</int>
     </void>
     <void property="journal">
      <string>Science</string>

@@ -3,8 +3,12 @@ package sample;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
+import org.controlsfx.validation.ValidationSupport;
+import org.controlsfx.validation.Validator;
+
 import java.util.NoSuchElementException;
 import java.util.Optional;
+import java.util.function.Function;
 
 
 public class AddScientificWorkController {
@@ -18,13 +22,37 @@ public class AddScientificWorkController {
     public Spinner<Integer> citations;
     public TextField aff;
     private int id=-1;
+    private ValidationSupport[]support;
+    private ValidationSupport validation=new ValidationSupport();
 
-    public void setId(int id) {
-        this.id = id;
+
+
+
+    public AddScientificWorkController() {
+        support = new ValidationSupport[5];
+        for (int i = 0; i < 5; i++)
+            support[i] = new ValidationSupport();
     }
 
     @FXML
     private void initialize() {
+        support[0].registerValidator(title, false, Validator.createPredicateValidator(o1 -> validationTitle(title.getText()), "This field must not be empty"));
+        support[1].registerValidator(author, false, Validator.createPredicateValidator(o1 -> validationAuthor(author.getText()), "Can contain only letters and comma and must not be empty"));
+        support[2].registerValidator(journal, false, Validator.createPredicateValidator(o1 -> validationJournal(journal.getText()), "This field can contain only letters or be empty"));
+        support[3].registerValidator(aff, false, Validator.createPredicateValidator(o1 -> validationJournal(aff.getText()), "This field can contain only letters or be empty"));
+        support[4].registerValidator(fieldStudy.getEditor(), false, Validator.createPredicateValidator(o1 -> validationJournal(fieldStudy.getEditor().getText()), "This field can contain only letters or be empty"));
+        check(title, this::validationTitle, support[0]);
+        check(author, this::validationAuthor, support[1]);
+        check(journal,this::validationJournal,support[2]);
+        check(aff, this::validationJournal, support[3]);
+        check(fieldStudy.getEditor(),this::validationJournal, support[4]);
+
+
+        checkAfterFocus(title, support[0]);
+        checkAfterFocus(author, support[1]);
+        checkAfterFocus(journal,support[2]);
+        checkAfterFocus(aff, support[3]);
+        checkAfterFocus(fieldStudy.getEditor(),support[4]);
         fieldStudy.getItems().addAll(
                 "Medicine",
                 "Biology",
@@ -57,7 +85,48 @@ public class AddScientificWorkController {
         );
 
     }
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    private void check(TextField tekstualnoPolje, Function<String, Boolean> validacija, ValidationSupport support) {
+        tekstualnoPolje.textProperty().addListener((observableValue, oldValue, newValue) -> {
+             if (validacija.apply(newValue)) {
+                tekstualnoPolje.getStyleClass().removeAll("poljeNijeIspravno", "poljeNeutralno");
+                tekstualnoPolje.getStyleClass().add("poljeIspravno");
+            } else {
+                tekstualnoPolje.getStyleClass().removeAll("poljeIspravno", "poljeNeutralno");
+                tekstualnoPolje.getStyleClass().add("poljeNijeIspravno");
+                support.setErrorDecorationEnabled(true);
+            }
+        });
+    }
+
+
+
+    private void checkAfterFocus(TextField tekstualnoPolje, ValidationSupport support) {
+        tekstualnoPolje.focusedProperty().addListener((observableValue, oldValue, newValue) -> {
+            if (newValue)
+                support.setErrorDecorationEnabled(false);
+            else
+                support.setErrorDecorationEnabled(true);
+        });
+    }
+
+
+    boolean validationTitle(String s){
+        return (s.length()>5);
+    }
+    boolean validationAuthor(String s){
+        return (s.matches("^[a-zA-Z_ \\,]+$") && s.length()>5);
+    }
+    boolean validationJournal(String s){
+        return (s.matches("^[a-zA-Z_ \\&]+$") || s.length()==0);
+    }
+
     public void add(ActionEvent actionEvent){
+        //if(validationTitle(title.getText()) && validationAuthor(va))
+
         if(id!=-1){
             ScientificWorksDAO dao=ScientificWorksDAO.getInstance();
             int field=dao.getIdField(fieldStudy.getValue());
@@ -70,7 +139,7 @@ public class AddScientificWorkController {
                 dao.addTypeP(publType.getValue());
                 p=dao.getIdType(publType.getValue());
             }
-            int value = (Integer) year.getValue();
+            int value = (Integer) year.getValue( );
             int value1 = (Integer) citations.getValue();
             dao.updateScien(title.getText(),author.getText(),field,journal.getText(),p,value,value1,aff.getText(),id);
             Alert alert = new Alert(Alert.AlertType.INFORMATION);

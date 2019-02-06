@@ -18,3 +18,15 @@
 #grid{
 -fx-background-color: #404144;
 }
+
+.poljeIspravno {
+    -fx-background-color: white;
+}
+
+.poljeNijeIspravno {
+    -fx-background-color: lightpink;
+}
+
+.poljeNeutralno {
+    -fx-background-color: white;
+}

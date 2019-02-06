@@ -19,6 +19,7 @@ import javafx.stage.WindowEvent;
 import javafx.util.Callback;
 import net.sf.jasperreports.engine.*;
 import net.sf.jasperreports.swing.JRViewer;
+import org.controlsfx.validation.ValidationSupport;
 
 import javax.swing.*;
 import java.beans.XMLDecoder;

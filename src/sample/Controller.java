@@ -20,6 +20,7 @@ import javafx.util.Callback;
 import net.sf.jasperreports.engine.*;
 import net.sf.jasperreports.swing.JRViewer;
 import org.controlsfx.validation.ValidationSupport;
+import org.controlsfx.validation.Validator;
 
 import javax.swing.*;
 import java.beans.XMLDecoder;
@@ -30,6 +31,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.NoSuchElementException;
 import java.util.Optional;
+import java.util.function.Function;
 
 public class Controller {
     public static ScientificModel model=new ScientificModel();
@@ -48,10 +50,30 @@ public class Controller {
     public  TextField textField;
     public  TextField textField1;
     public  TextField textField2;
+    private ValidationSupport[]support;
+
+
+
+
+    public Controller() {
+        support = new ValidationSupport[2];
+        for (int i = 0; i < 2; i++)
+            support[i] = new ValidationSupport();
+    }
 
 
     @FXML
     private void initialize() {
+        support[0].registerValidator(textField1, false, Validator.createPredicateValidator(o1 -> validation(textField1.getText()), "This field can contain only letters and must not be empty"));
+        support[1].registerValidator(textField2, false, Validator.createPredicateValidator(o1 -> validation(textField2.getText()), "This field can contain only letters and must not be empty"));
+        check(textField1, this::validation, support[0]);
+        check(textField2, this::validation, support[1]);
+
+        checkAfterFocus(textField1, support[0]);
+        checkAfterFocus(textField2, support[1]);
+
+
+
         id.setCellValueFactory(new PropertyValueFactory<ScientificWork, SimpleIntegerProperty>("id"));
         title.setCellValueFactory(new PropertyValueFactory<ScientificWork, SimpleStringProperty>("Title"));
         author.setCellValueFactory(new PropertyValueFactory<ScientificWork, SimpleStringProperty>("Author"));
@@ -154,11 +176,39 @@ public class Controller {
         });
 
 
+
         SortedList<ScientificWork> sortedData = new SortedList<>(flPerson);
         sortedData.comparatorProperty().bind(table.comparatorProperty());
         table.setItems(sortedData);
     }
 
+    boolean validation(String s){
+        return (s.matches("^[a-zA-Z_ \\&]+$") && s.length()>0);
+    }
+
+    private void check(TextField tekstualnoPolje, Function<String, Boolean> validacija, ValidationSupport support) {
+        tekstualnoPolje.textProperty().addListener((observableValue, oldValue, newValue) -> {
+            if (validacija.apply(newValue)) {
+                tekstualnoPolje.getStyleClass().removeAll("poljeNijeIspravno", "poljeNeutralno");
+                tekstualnoPolje.getStyleClass().add("poljeIspravno");
+            } else {
+                tekstualnoPolje.getStyleClass().removeAll("poljeIspravno", "poljeNeutralno");
+                tekstualnoPolje.getStyleClass().add("poljeNijeIspravno");
+                support.setErrorDecorationEnabled(true);
+            }
+        });
+    }
+
+
+
+    private void checkAfterFocus(TextField tekstualnoPolje, ValidationSupport support) {
+        tekstualnoPolje.focusedProperty().addListener((observableValue, oldValue, newValue) -> {
+            if (newValue)
+                support.setErrorDecorationEnabled(false);
+            else
+                support.setErrorDecorationEnabled(true);
+        });
+    }
     public void reload(){
         id.setCellValueFactory(new PropertyValueFactory<ScientificWork, SimpleIntegerProperty>("id"));
         title.setCellValueFactory(new PropertyValueFactory<ScientificWork, SimpleStringProperty>("Title"));

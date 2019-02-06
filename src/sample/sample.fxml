@@ -17,7 +17,7 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Font?>
 
-<GridPane fx:id="grid" alignment="center" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="1520.0" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller">
+<GridPane fx:id="grid" alignment="center" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="605.0" prefWidth="1551.0" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller">
     <stylesheets>
         <URL value="@e.css" />
     </stylesheets>
@@ -25,18 +25,20 @@
     <columnConstraints>
       <ColumnConstraints maxWidth="-Infinity" minWidth="-Infinity" prefWidth="1230.0" />
       <ColumnConstraints maxWidth="-Infinity" minWidth="-Infinity" prefWidth="330.0" />
-      <ColumnConstraints maxWidth="-Infinity" minWidth="-Infinity" />
+      <ColumnConstraints maxWidth="0.0" minWidth="-Infinity" prefWidth="0.0" />
       <ColumnConstraints maxWidth="0.0" minWidth="0.0" prefWidth="0.0" />
    </columnConstraints>
    <rowConstraints>
-      <RowConstraints maxHeight="38.0" minHeight="0.0" prefHeight="38.0" />
-      <RowConstraints maxHeight="318.0" minHeight="280.0" prefHeight="500.0" />
-      <RowConstraints maxHeight="318.0" minHeight="3.0" prefHeight="55.0" />
+      <RowConstraints maxHeight="318.0" minHeight="10.0" prefHeight="51.0" />
+      <RowConstraints maxHeight="318.0" minHeight="10.0" prefHeight="150.0" />
+      <RowConstraints maxHeight="318.0" minHeight="10.0" prefHeight="150.0" />
+      <RowConstraints maxHeight="318.0" minHeight="10.0" prefHeight="150.0" />
+      <RowConstraints maxHeight="318.0" minHeight="10.0" prefHeight="100.0" />
    </rowConstraints>
    <children>
-      <TableView fx:id="table" editable="true" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" prefHeight="446.0" prefWidth="1216.0" GridPane.halignment="CENTER" GridPane.hgrow="NEVER" GridPane.rowIndex="1" GridPane.valignment="CENTER" GridPane.vgrow="NEVER">
+      <TableView fx:id="table" editable="true" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" prefHeight="450.0" prefWidth="1206.0" GridPane.halignment="RIGHT" GridPane.hgrow="NEVER" GridPane.rowIndex="1" GridPane.rowSpan="3" GridPane.valignment="TOP" GridPane.vgrow="NEVER">
         <columns>
-          <TableColumn fx:id="id" prefWidth="30.000015258789062" text="ID" />
+          <TableColumn fx:id="id" prefWidth="30.0" text="ID" />
           <TableColumn fx:id="title" prefWidth="266.9999694824219" text="Title" />
             <TableColumn fx:id="author" prefWidth="204.0" text="Author" />
             <TableColumn fx:id="field" prefWidth="106.0" text="Field of study" />
@@ -47,10 +49,10 @@
             <TableColumn fx:id="affiliation" prefWidth="190.0" resizable="false" text="Affiliation" />
         </columns>
          <GridPane.margin>
-            <Insets bottom="150.0" left="20.0" top="100.0" />
+            <Insets />
          </GridPane.margin>
       </TableView>
-      <MenuBar prefHeight="32.0" prefWidth="1300.0" GridPane.columnSpan="2">
+      <MenuBar prefHeight="30.0" prefWidth="1300.0" GridPane.columnSpan="2" GridPane.valignment="TOP">
         <menus>
           <Menu text="_File">
             <items>
@@ -80,18 +82,18 @@
           </Menu>
         </menus>
          <GridPane.margin>
-            <Insets bottom="300.0" left="5.0" top="100.0" />
+            <Insets left="5.0" />
          </GridPane.margin>
       </MenuBar>
-      <ChoiceBox fx:id="choiceBox" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="31.0" prefWidth="150.0" GridPane.halignment="CENTER" GridPane.rowIndex="2">
+      <ChoiceBox fx:id="choiceBox" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="31.0" prefWidth="150.0" GridPane.halignment="CENTER" GridPane.rowIndex="4">
          <GridPane.margin>
-            <Insets right="200.0" top="100.0" />
+            <Insets right="200.0" />
          </GridPane.margin></ChoiceBox>
-      <TextField fx:id="textField" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="31.0" prefWidth="411.0" GridPane.rowIndex="2">
+      <TextField fx:id="textField" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="31.0" prefWidth="411.0" GridPane.rowIndex="4">
          <GridPane.margin>
-            <Insets left="20.0" top="100.0" />
+            <Insets left="20.0" />
          </GridPane.margin></TextField>
-      <BorderPane fx:id="hbox" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="128.0" prefWidth="305.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
+      <BorderPane fx:id="hbox" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="128.0" prefWidth="305.0" GridPane.columnIndex="1" GridPane.rowIndex="1" GridPane.valignment="TOP">
          <center>
             <TextField fx:id="textField2" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" prefHeight="29.0" prefWidth="234.0" BorderPane.alignment="TOP_CENTER">
                <BorderPane.margin>
@@ -112,7 +114,7 @@
             </Label>
          </top>
          <GridPane.margin>
-            <Insets bottom="370.0" left="5.0" right="5.0" />
+            <Insets left="5.0" right="5.0" />
          </GridPane.margin>
          <bottom>
             <Button mnemonicParsing="false" onAction="#addF" prefHeight="35.0" prefWidth="91.0" text="Add" BorderPane.alignment="CENTER">
@@ -137,7 +139,7 @@
             </Label>
          </left>
       </BorderPane>
-      <BorderPane fx:id="hbox1" layoutX="1225.0" layoutY="-42.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="128.0" prefWidth="305.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
+      <BorderPane fx:id="hbox1" layoutX="1225.0" layoutY="-42.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="128.0" prefWidth="305.0" GridPane.columnIndex="1" GridPane.rowIndex="2" GridPane.valignment="TOP">
          <top>
             <Label fx:id="labelica" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="32.0" prefWidth="158.0" text="New publication type" textFill="LIGHTGRAY" BorderPane.alignment="TOP_CENTER">
                <font>
@@ -175,7 +177,7 @@
             </Label>
          </left>
          <GridPane.margin>
-            <Insets bottom="70.0" left="5.0" />
+            <Insets left="5.0" top="3.0" />
          </GridPane.margin>
          <center>
             <TextField fx:id="textField1" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" prefHeight="31.0" prefWidth="234.0" BorderPane.alignment="BOTTOM_CENTER">
@@ -184,7 +186,7 @@
                </BorderPane.margin></TextField>
          </center>
       </BorderPane>
-      <BorderPane fx:id="hbox2" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="144.0" prefWidth="306.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
+      <BorderPane fx:id="hbox2" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="144.0" prefWidth="306.0" GridPane.columnIndex="1" GridPane.rowIndex="3" GridPane.valignment="BOTTOM">
          <top>
             <Button fx:id="addS" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#addS" prefHeight="35.0" prefWidth="270.0" text="Add new scientific work" BorderPane.alignment="CENTER">
                <BorderPane.margin>
@@ -212,7 +214,7 @@
             </Button>
          </bottom>
          <GridPane.margin>
-            <Insets left="5.0" right="20.0" top="250.0" />
+            <Insets left="5.0" right="20.0" />
          </GridPane.margin>
       </BorderPane>
    </children>

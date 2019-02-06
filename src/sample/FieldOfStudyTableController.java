@@ -37,10 +37,6 @@ public class FieldOfStudyTableController {
                 return false;
             });
         });
-        SortedList<FieldOfStudy> sortedData = new SortedList<>(flPerson);
-        sortedData.comparatorProperty().bind(table.comparatorProperty());
-        table.setItems(sortedData);
-
 
         table.setRowFactory(tv -> {
             TableRow<FieldOfStudy> row = new TableRow<>();
@@ -56,6 +52,9 @@ public class FieldOfStudyTableController {
             textField2.clear();
             table.getSelectionModel().clearSelection();
         });
+        SortedList<FieldOfStudy> sortedData = new SortedList<>(flPerson);
+        sortedData.comparatorProperty().bind(table.comparatorProperty());
+        table.setItems(sortedData);
     }
 
     public void delete (ActionEvent actionEvent)throws NoSelectedExeption {

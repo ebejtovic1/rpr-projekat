@@ -8,7 +8,6 @@ import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.print.*;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
@@ -21,7 +20,6 @@ import net.sf.jasperreports.engine.*;
 import net.sf.jasperreports.swing.JRViewer;
 import org.controlsfx.validation.ValidationSupport;
 import org.controlsfx.validation.Validator;
-
 import javax.swing.*;
 import java.beans.XMLDecoder;
 import java.beans.XMLEncoder;
@@ -203,10 +201,16 @@ public class Controller {
 
     private void checkAfterFocus(TextField tekstualnoPolje, ValidationSupport support) {
         tekstualnoPolje.focusedProperty().addListener((observableValue, oldValue, newValue) -> {
-            if (newValue)
+            if (newValue){
                 support.setErrorDecorationEnabled(false);
-            else
+            tekstualnoPolje.getStyleClass().removeAll("poljeNijeIspravno", "poljeNeutralno");
+            tekstualnoPolje.getStyleClass().add("poljeIspravno");
+            support.setErrorDecorationEnabled(false);}
+            else{
                 support.setErrorDecorationEnabled(true);
+            tekstualnoPolje.getStyleClass().removeAll("poljeNijeIspravno", "poljeNeutralno");
+            tekstualnoPolje.getStyleClass().add("poljeIspravno");
+            support.setErrorDecorationEnabled(false);}
         });
     }
     public void reload(){
@@ -343,6 +347,9 @@ public class Controller {
         ScientificWorksDAO dao=ScientificWorksDAO.getInstance();
         dao.addFieldS(textField2.getText());
         textField2.clear();
+        textField2.getStyleClass().removeAll("poljeNijeIspravno", "poljeNeutralno");
+        textField2.getStyleClass().add("poljeIspravno");
+        support[1].setErrorDecorationEnabled(false);
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setTitle("Information");
         alert.setHeaderText(null);
@@ -358,13 +365,22 @@ public class Controller {
         return;
         }
         else{
+            textField2.getStyleClass().removeAll("poljeIspravno", "poljeNeutralno");
+            textField2.getStyleClass().add("poljeNijeIspravno");
+            support[1].setErrorDecorationEnabled(true);
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("Error");
             alert.setHeaderText(null);
             alert.setContentText("Incorrect data in field!");
+
             Optional<ButtonType> action= alert.showAndWait();
+
             try{
                 if(action.get().equals(ButtonType.OK)) {
+
+                    textField2.getStyleClass().removeAll("poljeIspravno", "poljeNeutralno");
+                    textField2.getStyleClass().add("poljeNijeIspravno");
+                    support[1].setErrorDecorationEnabled(true);
                     if(textField2.getText().equals(""))
                     {
                         textField2.setText(".");
@@ -418,6 +434,9 @@ public class Controller {
         ScientificWorksDAO dao=ScientificWorksDAO.getInstance();
         dao.addTypeP(textField1.getText());
         textField1.clear();
+        textField1.getStyleClass().removeAll("poljeNijeIspravno", "poljeNeutralno");
+        textField1.getStyleClass().add("poljeIspravno");
+        support[0].setErrorDecorationEnabled(false);
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setTitle("Information");
         alert.setHeaderText(null);
@@ -432,6 +451,9 @@ public class Controller {
         }
         return;}
         else{
+            textField1.getStyleClass().removeAll("poljeIspravno", "poljeNeutralno");
+            textField1.getStyleClass().add("poljeNijeIspravno");
+            support[0].setErrorDecorationEnabled(true);
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("Error");
             alert.setHeaderText(null);

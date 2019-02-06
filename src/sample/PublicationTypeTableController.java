@@ -38,9 +38,9 @@ public class PublicationTypeTableController {
                 return false;
             });
             });
-        SortedList<PublicationType> sortedData = new SortedList<>(flPerson);
+       /* SortedList<PublicationType> sortedData = new SortedList<>(flPerson);
         sortedData.comparatorProperty().bind(table.comparatorProperty());
-        table.setItems(sortedData);
+        table.setItems(sortedData);*/
 
         table.setRowFactory(tv -> {
             TableRow<PublicationType> row = new TableRow<>();
@@ -55,6 +55,9 @@ public class PublicationTypeTableController {
             textField2.clear();
             table.getSelectionModel().clearSelection();
         });
+        SortedList<PublicationType> sortedData = new SortedList<>(flPerson);
+        sortedData.comparatorProperty().bind(table.comparatorProperty());
+        table.setItems(sortedData);
     }
 
     public void delete (ActionEvent actionEvent)throws NoSelectedExeption {

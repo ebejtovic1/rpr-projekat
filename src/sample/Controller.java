@@ -315,17 +315,6 @@ public class Controller {
 
     }
 
-   /* public void print(ActionEvent actionEvent) {
-
-        PrinterJob job = PrinterJob.createPrinterJob();
-        if (job != null && job.showPrintDialog(table.getScene().getWindow())) {
-            boolean success = job.printPage(table);
-            if (success) {
-                job.endJob();
-            }
-        }
-        model.Ispisi();
-    }*/
 
     public void exit(ActionEvent actionEvent){
         System.exit(0);
@@ -350,6 +339,7 @@ public class Controller {
     }
 
     public void addF(ActionEvent actionEvent){
+        if(validation(textField2.getText())){
         ScientificWorksDAO dao=ScientificWorksDAO.getInstance();
         dao.addFieldS(textField2.getText());
         textField2.clear();
@@ -366,6 +356,28 @@ public class Controller {
             return;
         }
         return;
+        }
+        else{
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Error");
+            alert.setHeaderText(null);
+            alert.setContentText("Incorrect data in field!");
+            Optional<ButtonType> action= alert.showAndWait();
+            try{
+                if(action.get().equals(ButtonType.OK)) {
+                    if(textField2.getText().equals(""))
+                    {
+                        textField2.setText(".");
+                        textField2.clear();
+                    }
+                    alert.close();
+                }}
+            catch(NoSuchElementException z){
+                return;
+            }
+            return;
+        }
+
     }
     public void save(ActionEvent actionEvent) throws FileNotFoundException {
 
@@ -402,6 +414,7 @@ public class Controller {
 
 
     public void addP(ActionEvent actionEvent){
+        if(validation(textField1.getText())){
         ScientificWorksDAO dao=ScientificWorksDAO.getInstance();
         dao.addTypeP(textField1.getText());
         textField1.clear();
@@ -417,7 +430,27 @@ public class Controller {
         catch(NoSuchElementException z){
             return;
         }
-        return;
+        return;}
+        else{
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Error");
+            alert.setHeaderText(null);
+            alert.setContentText("Incorrect data in field!");
+            Optional<ButtonType> action= alert.showAndWait();
+            try{
+                if(action.get().equals(ButtonType.OK)) {
+                    if(textField1.getText().equals(""))
+                    {
+                        textField1.setText(".");
+                        textField1.clear();
+                    }
+                    alert.close();
+                }}
+            catch(NoSuchElementException z){
+                return;
+            }
+            return;
+        }
     }
 
     public void delete (ActionEvent actionEvent)throws NoSelectedExeption {

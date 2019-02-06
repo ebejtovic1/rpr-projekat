@@ -93,7 +93,10 @@ public class Controller {
             }
         });
 
+
+
         journal.setCellValueFactory(new PropertyValueFactory<ScientificWork, SimpleStringProperty>("Journal"));
+
         year.setCellValueFactory(new PropertyValueFactory<ScientificWork, SimpleIntegerProperty>("YearOfIssue"));
         citations.setCellValueFactory(new PropertyValueFactory<ScientificWork, SimpleIntegerProperty>("Citations"));
         affiliation.setCellValueFactory(new PropertyValueFactory<ScientificWork, SimpleStringProperty>("Affiliation"));
@@ -632,9 +635,64 @@ public class Controller {
             this.setVisible(true);
         }
     }
+
+    public class PrintReport1 extends JFrame {
+        public void showReport(Connection conn) throws JRException {
+            String reportSrcFile = getClass().getResource("/reports/Coffee_3.jrxml").getFile();
+            String reportsDir = getClass().getResource("/reports/").getFile();
+
+            JasperReport jasperReport = JasperCompileManager.compileReport(reportSrcFile);
+            HashMap<String, Object> parameters = new HashMap<String, Object>();
+            parameters.put("reportsDirPath", reportsDir);
+            ArrayList<HashMap<String, Object>> list = new ArrayList<HashMap<String, Object>>();
+            list.add(parameters);
+            JasperPrint print = JasperFillManager.fillReport(jasperReport, parameters, conn);
+            JRViewer viewer = new JRViewer(print);
+            viewer.setOpaque(true);
+            viewer.setVisible(true);
+            this.add(viewer);
+            this.setSize(1300, 1000);
+            this.setVisible(true);
+        }
+    }
+    public class PrintReport2 extends JFrame {
+        public void showReport(Connection conn) throws JRException {
+            String reportSrcFile = getClass().getResource("/reports/Coffee_4.jrxml").getFile();
+            String reportsDir = getClass().getResource("/reports/").getFile();
+
+            JasperReport jasperReport = JasperCompileManager.compileReport(reportSrcFile);
+            HashMap<String, Object> parameters = new HashMap<String, Object>();
+            parameters.put("reportsDirPath", reportsDir);
+            ArrayList<HashMap<String, Object>> list = new ArrayList<HashMap<String, Object>>();
+            list.add(parameters);
+            JasperPrint print = JasperFillManager.fillReport(jasperReport, parameters, conn);
+            JRViewer viewer = new JRViewer(print);
+            viewer.setOpaque(true);
+            viewer.setVisible(true);
+            this.add(viewer);
+            this.setSize(1300, 1000);
+            this.setVisible(true);
+        }
+    }
+
+
     public void print(ActionEvent actionEvent) {
         try {
             new PrintReport().showReport(dao.getConn());
+        } catch (JRException e1) {
+            e1.printStackTrace();
+        }
+    }
+    public void statistic(ActionEvent actionEvent) {
+        try {
+            new PrintReport1().showReport(dao.getConn());
+        } catch (JRException e1) {
+            e1.printStackTrace();
+        }
+    }
+    public void statistic1(ActionEvent actionEvent) {
+        try {
+            new PrintReport2().showReport(dao.getConn());
         } catch (JRException e1) {
             e1.printStackTrace();
         }

@@ -64,9 +64,6 @@
           </Menu>
           <Menu text="_Edit">
             <items>
-                <MenuItem onAction="#addS" text="_Add" />
-              <MenuItem onAction="#delete" text="_Delete" />
-                  <MenuItem onAction="#update" text="_Update" />
                   <Menu text="_Modifiy">
                     <items>
                         <MenuItem onAction="#modifyF" text="Fiel_d of study table" />
@@ -75,6 +72,16 @@
                   </Menu>
             </items>
           </Menu>
+            <Menu mnemonicParsing="false" text="View">
+              <items>
+                  <Menu mnemonicParsing="false" text="Statistic">
+                    <items>
+                      <MenuItem mnemonicParsing="false" onAction="#statistic" text="By author" />
+                        <MenuItem mnemonicParsing="false" onAction="#statistic1" text="By affiliation" />
+                    </items>
+                  </Menu>
+              </items>
+            </Menu>
           <Menu text="_Help">
             <items>
               <MenuItem text="A_bout" />

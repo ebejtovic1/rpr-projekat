@@ -67,6 +67,20 @@ public class ScientificWorksDAO {
         }
     }
 
+    public static void removeInstance() {
+        if (instance == null) return;
+        instance.close();
+        instance = null;
+    }
+
+    public void close() {
+        try {
+            conn.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
     private void regenerateBase() throws FileNotFoundException {
         Scanner ulaz=new Scanner(new FileInputStream("base.db.sql"));
         String sql="";
@@ -85,11 +99,11 @@ public class ScientificWorksDAO {
         ulaz.close();
     }
 
-    private FieldOfStudy getFieldRS(ResultSet rs) throws SQLException {
+    public FieldOfStudy getFieldRS(ResultSet rs) throws SQLException {
        return new FieldOfStudy(rs.getInt(1), rs.getString(2));
     }
 
-    private FieldOfStudy getField(int id) {
+    public FieldOfStudy getField(int id) {
         try {
             getFieldQuery.setInt(1, id);
             ResultSet rs=getFieldQuery.executeQuery();
@@ -102,11 +116,11 @@ public class ScientificWorksDAO {
 
     }
 
-    private PublicationType getTypeRS(ResultSet rs) throws SQLException {
+    public PublicationType getTypeRS(ResultSet rs) throws SQLException {
         return new PublicationType(rs.getInt(1), rs.getString(2));
     }
 
-    private PublicationType getType(int id) {
+    public PublicationType getType(int id) {
         try {
             getTypeQuery.setInt(1, id);
             ResultSet rs=getTypeQuery.executeQuery();
@@ -340,4 +354,6 @@ public class ScientificWorksDAO {
     public Connection getConn() {
         return conn;
     }
+
+
 }

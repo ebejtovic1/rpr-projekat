@@ -49,6 +49,7 @@ public class Controller {
     public  TextField textField1;
     public  TextField textField2;
     private ValidationSupport[]support;
+    public Button addS;
 
 
 

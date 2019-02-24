@@ -27,7 +27,7 @@
       <RowConstraints maxHeight="62.0" minHeight="10.0" prefHeight="55.0" vgrow="SOMETIMES" />
   </rowConstraints>
    <children>
-      <Button mnemonicParsing="false" onAction="#delete" prefHeight="31.0" prefWidth="150.0" text="Delete" GridPane.columnSpan="2" GridPane.halignment="CENTER" GridPane.rowIndex="2" />
+      <Button fx:id="deleteFF" mnemonicParsing="false" onAction="#delete" prefHeight="31.0" prefWidth="150.0" text="Delete" GridPane.columnSpan="2" GridPane.halignment="CENTER" GridPane.rowIndex="2" />
       <TextField fx:id="textField" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="31.0" prefWidth="355.0" GridPane.columnSpan="2">
          <GridPane.margin>
             <Insets left="5.0" right="5.0" />

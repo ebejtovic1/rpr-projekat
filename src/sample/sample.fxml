@@ -67,7 +67,7 @@
                   <Menu text="_Modifiy">
                     <items>
                         <MenuItem onAction="#modifyF" text="Fiel_d of study table" />
-                        <MenuItem onAction="#modifyT" text="_Publication type table" />
+                        <MenuItem onAction="#modifyT" text="Publi_cation type table" />
                     </items>
                   </Menu>
             </items>

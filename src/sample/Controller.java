@@ -479,7 +479,7 @@ public class Controller {
         }
     }
 
-    public void delete (ActionEvent actionEvent)throws NoSelectedExeption {
+    public void delete (ActionEvent actionEvent)throws NoSelectedException {
 
         try {
             int id = table.getSelectionModel().getSelectedItem().getId();
@@ -513,7 +513,7 @@ public class Controller {
         }
     }
 
-    public void update (ActionEvent actionEvent)throws NoSelectedExeption {
+    public void update (ActionEvent actionEvent)throws NoSelectedException {
         FXMLLoader loader1 = new FXMLLoader(getClass().getResource("AddScientificWork.fxml"));
         Stage stage = new Stage(StageStyle.DECORATED);
         try { stage.setScene(new Scene((Pane) loader1.load())

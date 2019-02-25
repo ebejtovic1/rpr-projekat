@@ -42,7 +42,7 @@
             <Insets right="-2.0" />
          </GridPane.margin>
       </TableView>
-      <Button mnemonicParsing="false" onAction="#add" prefHeight="31.0" prefWidth="150.0" text="Add new" GridPane.halignment="CENTER" GridPane.rowIndex="3" />
+      <Button fx:id="addTT" mnemonicParsing="false" onAction="#add" prefHeight="31.0" prefWidth="150.0" text="Add new" GridPane.halignment="CENTER" GridPane.rowIndex="3" />
       <TextField fx:id="textField1" maxHeight="-Infinity" minHeight="-Infinity" prefHeight="31.0" GridPane.columnIndex="1" GridPane.rowIndex="3">
          <GridPane.margin>
             <Insets right="4.0" />

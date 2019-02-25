@@ -208,7 +208,7 @@ public class AddScientificWorkController {
                         }
                 }
                     if (!validationJournal1(publType1.getEditor().getText())){
-                    if(publType1.getValue()==null){
+                    if(publType1.getValue().equals("")){
                         publType1.setValue(".");
                         publType1.getEditor().clear();}}
 
@@ -231,9 +231,7 @@ public class AddScientificWorkController {
         }
     }
 
-    public Button getAddBtn() {
-        return addBtn;
-    }
+
     public TextField getTitle() {
         return title1;
     }

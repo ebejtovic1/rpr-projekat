@@ -75,7 +75,7 @@ public class FieldOfStudyTableController {
         table.setItems(sortedData);
     }
 
-    public void delete (ActionEvent actionEvent)throws NoSelectedExeption {
+    public void delete (ActionEvent actionEvent)throws NoSelectedException {
 
         try {
             int id = table.getSelectionModel().getSelectedItem().getId();

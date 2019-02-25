@@ -61,10 +61,6 @@ class FieldAndPublicationTest {
         assertEquals("HEHE",field.getPublicationType().getType());
         assertEquals(1998, field.getYearOfIssue());
         assertEquals("Elma",field.getTitle());
-
-
     }
-
-
 
 }

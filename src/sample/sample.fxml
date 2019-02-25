@@ -64,22 +64,14 @@
           </Menu>
           <Menu text="_Edit">
             <items>
-                  <Menu text="_Modifiy">
-                    <items>
-                        <MenuItem onAction="#modifyF" text="Fiel_d of study table" />
-                        <MenuItem onAction="#modifyT" text="Publi_cation type table" />
-                    </items>
-                  </Menu>
+                  <MenuItem onAction="#modifyF" text="Modify Fiel_d of study table" />
+                  <MenuItem onAction="#modifyT" text="Modify Publi_cation type table" />
             </items>
           </Menu>
-            <Menu mnemonicParsing="false" text="View">
+            <Menu text="_View">
               <items>
-                  <Menu mnemonicParsing="false" text="Statistic">
-                    <items>
-                      <MenuItem mnemonicParsing="false" onAction="#statistic" text="By author" />
-                        <MenuItem mnemonicParsing="false" onAction="#statistic1" text="By affiliation" />
-                    </items>
-                  </Menu>
+                <MenuItem onAction="#statistic" text="Statistic by autho_r" />
+                  <MenuItem onAction="#statistic1" text="Statistic b_y affiliation" />
               </items>
             </Menu>
           <Menu text="_Help">
@@ -124,7 +116,7 @@
             <Insets left="5.0" right="5.0" />
          </GridPane.margin>
          <bottom>
-            <Button mnemonicParsing="false" onAction="#addF" prefHeight="35.0" prefWidth="91.0" text="Add" BorderPane.alignment="CENTER">
+            <Button fx:id="addField" mnemonicParsing="false" onAction="#addF" prefHeight="35.0" prefWidth="91.0" text="Add" BorderPane.alignment="CENTER">
                <BorderPane.margin>
                   <Insets bottom="5.0" top="10.0" />
                </BorderPane.margin>
@@ -161,7 +153,7 @@
             </Label>
          </top>
          <bottom>
-            <Button mnemonicParsing="false" onAction="#addP" prefHeight="31.0" prefWidth="91.0" text="Add" BorderPane.alignment="CENTER">
+            <Button fx:id="addType" mnemonicParsing="false" onAction="#addP" prefHeight="31.0" prefWidth="91.0" text="Add" BorderPane.alignment="CENTER">
                <BorderPane.margin>
                   <Insets bottom="5.0" top="10.0" />
                </BorderPane.margin>

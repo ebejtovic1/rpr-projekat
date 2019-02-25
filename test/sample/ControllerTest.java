@@ -90,6 +90,60 @@ class ControllerTest {
         robot.clickOn("#textField");
         robot.write("Testtest");
 
+        robot.clickOn("#choiceBox");
+        robot.press(KeyCode.DOWN).release(KeyCode.DOWN);
+        robot.press(KeyCode.ENTER).release(KeyCode.ENTER);
+        robot.clickOn("#textField");
+        robot.write("Testtest");
+
+        robot.clickOn("#choiceBox");
+        robot.press(KeyCode.DOWN).release(KeyCode.DOWN);
+        robot.press(KeyCode.ENTER).release(KeyCode.ENTER);
+        robot.clickOn("#textField");
+        robot.write("Testtest");
+
+        robot.clickOn("#choiceBox");
+        robot.press(KeyCode.DOWN).release(KeyCode.DOWN);
+        robot.press(KeyCode.ENTER).release(KeyCode.ENTER);
+        robot.clickOn("#textField");
+        robot.write("Testtest");
+
+        robot.clickOn("#choiceBox");
+        robot.press(KeyCode.DOWN).release(KeyCode.DOWN);
+        robot.press(KeyCode.ENTER).release(KeyCode.ENTER);
+        robot.clickOn("#textField");
+        robot.write("Testtest");
+
+        robot.clickOn("#choiceBox");
+        robot.press(KeyCode.DOWN).release(KeyCode.DOWN);
+        robot.press(KeyCode.ENTER).release(KeyCode.ENTER);
+        robot.clickOn("#textField");
+        robot.write("Testtest");
+
+        robot.clickOn("#choiceBox");
+        robot.press(KeyCode.DOWN).release(KeyCode.DOWN);
+        robot.press(KeyCode.ENTER).release(KeyCode.ENTER);
+        robot.clickOn("#textField");
+        robot.write("Testtest");
+
+        robot.clickOn("#choiceBox");
+        robot.press(KeyCode.DOWN).release(KeyCode.DOWN);
+        robot.press(KeyCode.ENTER).release(KeyCode.ENTER);
+        robot.clickOn("#textField");
+        robot.write("Testtest");
+
+        robot.clickOn("#choiceBox");
+        robot.press(KeyCode.UP).release(KeyCode.UP);
+        robot.press(KeyCode.UP).release(KeyCode.UP);
+        robot.press(KeyCode.UP).release(KeyCode.UP);
+        robot.press(KeyCode.UP).release(KeyCode.UP);
+        robot.press(KeyCode.UP).release(KeyCode.UP);
+        robot.press(KeyCode.UP).release(KeyCode.UP);
+        robot.press(KeyCode.UP).release(KeyCode.UP);
+        robot.press(KeyCode.ENTER).release(KeyCode.ENTER);
+        robot.clickOn("#textField");
+        robot.write("Testtest");
+
         robot.clickOn("Testtesttest");
         robot.clickOn("#deleteS");
 

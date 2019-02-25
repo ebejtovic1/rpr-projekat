@@ -27,6 +27,27 @@ public class ScientificWorksDAO {
         }
         try {
            selectAll=conn.prepareStatement("SELECT* FROM Scientific_work");
+            deleteAll=conn.prepareStatement("DELETE FROM Scientific_work");
+            updateTypeQuery=conn.prepareStatement("UPDATE Publication_type SET typee=? WHERE id=?");
+            updateFieldQuery=conn.prepareStatement("UPDATE Field_of_study SET title=? WHERE id=?");
+            selectAllType=conn.prepareStatement("SELECT* FROM Publication_Type");
+            setNullQuery=conn.prepareStatement("UPDATE Scientific_work SET FieldOfStudy=null WHERE FieldOfStudy=?");
+            setNullQuery1=conn.prepareStatement("UPDATE Scientific_work SET PublicationType=null WHERE PublicationType=?");
+            selectAllField=conn.prepareStatement("SELECT* FROM Field_of_study");
+            getFieldQuery=conn.prepareStatement("SELECT* FROM Field_of_study WHERE ID=?");
+            getTypeQuery=conn.prepareStatement("SELECT* FROM Publication_Type WHERE ID=?");
+            addField=conn.prepareStatement("INSERT INTO Field_of_study VALUES(?,?)");
+            addType=conn.prepareStatement("INSERT INTO Publication_Type VALUES(?,?)");
+            addScien=conn.prepareStatement("INSERT INTO Scientific_work VALUES(?,?,?,?,?,?,?,?,?)");
+            updateScien=conn.prepareStatement("UPDATE Scientific_work SET title=?, author=?, FieldOfStudy=?, Journal=?, PublicationType=?, YearOfIssue=?, Citations=?, Affiliation=? WHERE id=?");
+            maxIdField=conn.prepareStatement("SELECT max(id)+1 FROM Field_of_study");
+            maxIdType=conn.prepareStatement("SELECT max(id)+1 FROM Publication_Type");
+            maxIdScien=conn.prepareStatement("SELECT max(id)+1 FROM Scientific_work");
+            getIdFieldQuery=conn.prepareStatement("SELECT id FROM Field_of_study WHERE Title=?");
+            getIdTypeQuery=conn.prepareStatement("SELECT id FROM Publication_Type WHERE typee=?");
+            deleteSW=conn.prepareStatement("DELETE FROM Scientific_work WHERE id=?");
+            deletePT=conn.prepareStatement("DELETE FROM Publication_Type WHERE id=?");
+            deleteFS=conn.prepareStatement("DELETE FROM Field_of_study WHERE id=?");
         } catch (SQLException e) {
             try {
                 regenerateBase();
@@ -35,6 +56,27 @@ public class ScientificWorksDAO {
             }
             try {
                 selectAll=conn.prepareStatement("SELECT* FROM Scientific_work");
+                deleteAll=conn.prepareStatement("DELETE FROM Scientific_work");
+                updateTypeQuery=conn.prepareStatement("UPDATE Publication_type SET typee=? WHERE id=?");
+                updateFieldQuery=conn.prepareStatement("UPDATE Field_of_study SET title=? WHERE id=?");
+                selectAllType=conn.prepareStatement("SELECT* FROM Publication_Type");
+                setNullQuery=conn.prepareStatement("UPDATE Scientific_work SET FieldOfStudy=null WHERE FieldOfStudy=?");
+                setNullQuery1=conn.prepareStatement("UPDATE Scientific_work SET PublicationType=null WHERE PublicationType=?");
+                selectAllField=conn.prepareStatement("SELECT* FROM Field_of_study");
+                getFieldQuery=conn.prepareStatement("SELECT* FROM Field_of_study WHERE ID=?");
+                getTypeQuery=conn.prepareStatement("SELECT* FROM Publication_Type WHERE ID=?");
+                addField=conn.prepareStatement("INSERT INTO Field_of_study VALUES(?,?)");
+                addType=conn.prepareStatement("INSERT INTO Publication_Type VALUES(?,?)");
+                addScien=conn.prepareStatement("INSERT INTO Scientific_work VALUES(?,?,?,?,?,?,?,?,?)");
+                updateScien=conn.prepareStatement("UPDATE Scientific_work SET title=?, author=?, FieldOfStudy=?, Journal=?, PublicationType=?, YearOfIssue=?, Citations=?, Affiliation=? WHERE id=?");
+                maxIdField=conn.prepareStatement("SELECT max(id)+1 FROM Field_of_study");
+                maxIdType=conn.prepareStatement("SELECT max(id)+1 FROM Publication_Type");
+                maxIdScien=conn.prepareStatement("SELECT max(id)+1 FROM Scientific_work");
+                getIdFieldQuery=conn.prepareStatement("SELECT id FROM Field_of_study WHERE Title=?");
+                getIdTypeQuery=conn.prepareStatement("SELECT id FROM Publication_Type WHERE typee=?");
+                deleteSW=conn.prepareStatement("DELETE FROM Scientific_work WHERE id=?");
+                deletePT=conn.prepareStatement("DELETE FROM Publication_Type WHERE id=?");
+                deleteFS=conn.prepareStatement("DELETE FROM Field_of_study WHERE id=?");
             } catch (SQLException e1) {
                 e1.printStackTrace();
             }

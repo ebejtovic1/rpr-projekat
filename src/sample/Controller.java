@@ -698,4 +698,10 @@ public class Controller {
             e1.printStackTrace();
         }
     }
+    public void resetujBazu() {
+        ScientificWorksDAO.removeInstance();
+        File dbfile = new File("base.db");
+        dbfile.delete();
+        dao = ScientificWorksDAO.getInstance();
+    }
 }

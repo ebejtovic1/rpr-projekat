@@ -22,6 +22,9 @@
       </void>
      </object>
     </void>
+    <void property="id">
+     <int>1</int>
+    </void>
     <void property="publicationType">
      <object class="sample.PublicationType">
       <void property="id">
@@ -62,10 +65,10 @@
      </object>
     </void>
     <void property="id">
-     <int>1</int>
+     <int>2</int>
     </void>
     <void property="journal">
-     <string>ACM Transactions on IS</string>
+     <string>ACM Transactions on Information Systems</string>
     </void>
     <void property="publicationType">
      <object class="sample.PublicationType">
@@ -107,7 +110,7 @@
      </object>
     </void>
     <void property="id">
-     <int>2</int>
+     <int>3</int>
     </void>
     <void property="publicationType">
      <object class="sample.PublicationType">
@@ -149,7 +152,7 @@
      </object>
     </void>
     <void property="id">
-     <int>3</int>
+     <int>4</int>
     </void>
     <void property="publicationType">
      <object class="sample.PublicationType">
@@ -191,7 +194,7 @@
      </object>
     </void>
     <void property="id">
-     <int>4</int>
+     <int>5</int>
     </void>
     <void property="journal">
      <string>Jornual of Power Sources</string>
@@ -236,7 +239,7 @@
      </object>
     </void>
     <void property="id">
-     <int>5</int>
+     <int>6</int>
     </void>
     <void property="journal">
      <string>The Lancet</string>
@@ -281,7 +284,7 @@
      </object>
     </void>
     <void property="id">
-     <int>6</int>
+     <int>7</int>
     </void>
     <void property="publicationType">
      <object class="sample.PublicationType">
@@ -294,10 +297,94 @@
      </object>
     </void>
     <void property="title">
-     <string>Introduction to mediationon</string>
+     <string>Introduction to mediation, moderation, and conditional process analysis : a regression-based approach</string>
     </void>
     <void property="yearOfIssue">
      <int>2013</int>
+    </void>
+   </object>
+  </void>
+  <void method="add">
+   <object class="sample.ScientificWork">
+    <void property="author">
+     <string>George Paxinos</string>
+    </void>
+    <void property="citations">
+     <int>81937</int>
+    </void>
+    <void property="fieldOfStudy">
+     <object class="sample.FieldOfStudy">
+      <void property="id">
+       <int>2</int>
+      </void>
+      <void property="title">
+       <string>Biology</string>
+      </void>
+     </object>
+    </void>
+    <void property="id">
+     <int>8</int>
+    </void>
+    <void property="publicationType">
+     <object class="sample.PublicationType">
+      <void property="id">
+       <int>4</int>
+      </void>
+      <void property="type">
+       <string>Books</string>
+      </void>
+     </object>
+    </void>
+    <void property="title">
+     <string>The Rat Brain in Stereotaxic Coordinates</string>
+    </void>
+    <void property="yearOfIssue">
+     <int>2013</int>
+    </void>
+   </object>
+  </void>
+  <void method="add">
+   <object class="sample.ScientificWork">
+    <void property="affiliation">
+     <string>Office of Science and Technology</string>
+    </void>
+    <void property="author">
+     <string>Robert M. May</string>
+    </void>
+    <void property="citations">
+     <int>621</int>
+    </void>
+    <void property="fieldOfStudy">
+     <object class="sample.FieldOfStudy">
+      <void property="id">
+       <int>10</int>
+      </void>
+      <void property="title">
+       <string>History</string>
+      </void>
+     </object>
+    </void>
+    <void property="id">
+     <int>9</int>
+    </void>
+    <void property="journal">
+     <string>Science</string>
+    </void>
+    <void property="publicationType">
+     <object class="sample.PublicationType">
+      <void property="id">
+       <int>1</int>
+      </void>
+      <void property="type">
+       <string>Journal publications</string>
+      </void>
+     </object>
+    </void>
+    <void property="title">
+     <string>The Scientific Wealth of Nations</string>
+    </void>
+    <void property="yearOfIssue">
+     <int>1997</int>
     </void>
    </object>
   </void>
@@ -323,7 +410,7 @@
      </object>
     </void>
     <void property="id">
-     <int>7</int>
+     <int>10</int>
     </void>
     <void property="journal">
      <string>Science</string>

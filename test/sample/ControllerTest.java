@@ -24,6 +24,7 @@ import static org.junit.jupiter.api.Assertions.*;
 class ControllerTest {
     Stage theStage;
     Controller ctrl;
+    ScientificModel model=new ScientificModel();
 
 
     @Start
@@ -38,10 +39,14 @@ class ControllerTest {
         stage.show();
         stage.toFront();
         theStage = stage;
+
     }
 
     @Test
     public void testAdd(FxRobot robot) {
+        ctrl.resetujBazu();
+        ctrl.reload();
+        model.reload();
 
         // Otvaranje forme za dodavanje
         robot.clickOn("#addS");
@@ -174,40 +179,7 @@ class ControllerTest {
         robot.clickOn(okButton);
 
     }
-    @Test
-    public void saveOpen(FxRobot robot){
 
-        robot.press(KeyCode.ALT).press(KeyCode.F).release(KeyCode.F).press(KeyCode.S).release(KeyCode.S).release(KeyCode.ALT);
-        int temp=ctrl.table.getItems().size();
-        // Otvaranje forme za dodavanje
-        robot.clickOn("#addS");
-
-        // Čekamo da dijalog postane vidljiv
-        robot.lookup("#title1").tryQuery().isPresent();
-
-        // Postoji li fieldNaziv
-        robot.clickOn("#title1");
-        robot.write("Testtesttest");
-
-        robot.clickOn("#author1");
-        robot.write("Elma Bejtovic");
-
-        robot.clickOn("#journal1");
-        robot.write("Journal");
-
-        robot.clickOn("#aff1");
-        robot.write("Affilliation");
-
-        // Klik na dugme Ok
-        robot.clickOn("#addBtn");
-
-        robot.press(KeyCode.ALT).press(KeyCode.F4).release(KeyCode.F4).release(KeyCode.ALT);
-        robot.press(KeyCode.ALT).press(KeyCode.F4).release(KeyCode.F4).release(KeyCode.ALT);
-        assertEquals(temp+1,ctrl.table.getItems().size());
-        robot.press(KeyCode.ALT).press(KeyCode.F).release(KeyCode.F).press(KeyCode.O).release(KeyCode.O).release(KeyCode.ALT);
-        assertEquals(temp,ctrl.table.getItems().size());
-
-    }
 
     @Test
     public void test(FxRobot robot) {
@@ -247,7 +219,7 @@ class ControllerTest {
 
 
         ScientificWorksDAO dao=ScientificWorksDAO.getInstance();
-        dao.deleteFS(dao.getIdField("MedicineeF"));
+        dao.deleteFS(dao.getIdField("MedicineF"));
         dao.deletePT(dao.getIdType("Journal publicationsN"));
 
 
@@ -264,8 +236,10 @@ class ControllerTest {
     }
 
     @Test
-    public void Testic(FxRobot robot){
-
+    public void testic(FxRobot robot){
+        ScientificWorksDAO dao=ScientificWorksDAO.getInstance();
+        dao.deleteAll();
+        ctrl.resetujBazu();
         robot.clickOn("#textField1");
         robot.write("New type");
         robot.clickOn("#addType");
@@ -275,9 +249,7 @@ class ControllerTest {
         robot.write("New field");
         robot.clickOn("#addField");
         robot.press(KeyCode.ALT).press(KeyCode.F4).release(KeyCode.F4).release(KeyCode.ALT);
-        ScientificWorksDAO dao=ScientificWorksDAO.getInstance();
-        dao.deleteFS(dao.getIdField("New field"));
-        dao.deletePT(dao.getIdType("New type"));
+
     }
     @Test
     public void testic2(FxRobot robot){
@@ -332,6 +304,39 @@ class ControllerTest {
         robot.press(KeyCode.ALT).press(KeyCode.F4).release(KeyCode.F4).release(KeyCode.ALT);
         robot.press(KeyCode.ALT).press(KeyCode.E).release(KeyCode.E).press(KeyCode.C).release(KeyCode.C).release(KeyCode.ALT);
         robot.press(KeyCode.ALT).press(KeyCode.F4).release(KeyCode.F4).release(KeyCode.ALT);
+
+    }
+    @Test
+    public void testSaveOpen(FxRobot robot){
+        robot.press(KeyCode.ALT).press(KeyCode.F).release(KeyCode.F).press(KeyCode.S).release(KeyCode.S).release(KeyCode.ALT);
+        int temp=ctrl.table.getItems().size();
+        // Otvaranje forme za dodavanje
+        robot.clickOn("#addS");
+
+        // Čekamo da dijalog postane vidljiv
+        robot.lookup("#title1").tryQuery().isPresent();
+
+        // Postoji li fieldNaziv
+        robot.clickOn("#title1");
+        robot.write("Testtesttest");
+
+        robot.clickOn("#author1");
+        robot.write("Elma Bejtovic");
+
+        robot.clickOn("#journal1");
+        robot.write("Journal");
+
+        robot.clickOn("#aff1");
+        robot.write("Affilliation");
+
+        // Klik na dugme Ok
+        robot.clickOn("#addBtn");
+
+        robot.press(KeyCode.ALT).press(KeyCode.F4).release(KeyCode.F4).release(KeyCode.ALT);
+        robot.press(KeyCode.ALT).press(KeyCode.F4).release(KeyCode.F4).release(KeyCode.ALT);
+        assertEquals(temp+1,ctrl.table.getItems().size());
+        robot.press(KeyCode.ALT).press(KeyCode.F).release(KeyCode.F).press(KeyCode.O).release(KeyCode.O).release(KeyCode.ALT);
+        assertEquals(temp,ctrl.table.getItems().size());
     }
 
 }

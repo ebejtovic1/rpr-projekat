@@ -24,7 +24,7 @@ INSERT INTO `Scientific_work` VALUES (9,'The Scientific Wealth of Nations','Robe
 INSERT INTO `Scientific_work` VALUES (10,'The Science of Art','Richard M. Schultz',11,'Science',1,2002,306,'University of Pennsylvania');
 CREATE TABLE IF NOT EXISTS `Publication_Type` (
 	`id`	INTEGER NOT NULL,
-	`Type`	TEXT,
+	`Typee`	TEXT,
 	PRIMARY KEY(`id`)
 );
 INSERT INTO `Publication_Type` VALUES (1,'Journal publications');

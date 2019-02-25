@@ -48,7 +48,7 @@
             <Insets right="4.0" />
          </GridPane.margin>
       </TextField>
-      <Button mnemonicParsing="false" onAction="#update" prefHeight="31.0" prefWidth="150.0" text="Update" GridPane.halignment="CENTER" GridPane.rowIndex="4" />
+      <Button fx:id="update" mnemonicParsing="false" onAction="#update" prefHeight="31.0" prefWidth="150.0" text="Update" GridPane.halignment="CENTER" GridPane.rowIndex="4" />
       <TextField fx:id="textField2" maxHeight="-Infinity" minHeight="-Infinity" prefHeight="31.0" GridPane.columnIndex="1" GridPane.rowIndex="4">
          <GridPane.margin>
             <Insets right="4.0" />

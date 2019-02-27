@@ -13,9 +13,8 @@ import org.junit.jupiter.api.extension.ExtendWith;
 import org.testfx.api.FxRobot;
 import org.testfx.framework.junit5.ApplicationExtension;
 import org.testfx.framework.junit5.Start;
-
 import static javafx.scene.layout.Region.USE_COMPUTED_SIZE;
-import static org.junit.jupiter.api.Assertions.*;
+
 @ExtendWith(ApplicationExtension.class)
 class FieldOfStudyTableControllerTest {
     Stage theStage;
@@ -34,15 +33,12 @@ class FieldOfStudyTableControllerTest {
         stage.toFront();
         theStage = stage;
     }
+
     @Test
     public void testAdd(FxRobot robot) {
-
-        // Čekamo da dijalog postane vidljiv
         robot.lookup("#textField1").tryQuery().isPresent();
-        // Postoji li fieldNaziv
         robot.clickOn("#textField1");
         robot.write("Geography");
-        // Klik na dugme Ok
         robot.clickOn("#addTT");
         robot.press(KeyCode.ALT).press(KeyCode.F4).release(KeyCode.F4).release(KeyCode.ALT);
         robot.clickOn("Medicine");
@@ -71,29 +67,23 @@ class FieldOfStudyTableControllerTest {
         robot.clickOn("Geography");
         robot.clickOn("#deleteFF");
         robot.lookup(".dialog-pane").tryQuery().isPresent();
-        // Klik na dugme Ok
         DialogPane dialogPane = robot.lookup(".dialog-pane").queryAs(DialogPane.class);
         Button okButton1 = (Button) dialogPane.lookupButton(ButtonType.OK);
         robot.clickOn(okButton1);
         ScientificWorksDAO dao = ScientificWorksDAO.getInstance();
         dao.deleteFS(dao.getIdField("Geography"));
-
     }
+
     @Test
     public void testAdd2(FxRobot robot) {
-
-        // Čekamo da dijalog postane vidljiv
         robot.lookup("#textField1").tryQuery().isPresent();
-
-        // Postoji li fieldNaziv
         robot.clickOn("#textField1");
-
-        // Klik na dugme Ok
         robot.clickOn("#addTT");
         DialogPane dialogPane = robot.lookup(".dialog-pane").queryAs(DialogPane.class);
         Button okButton1 = (Button) dialogPane.lookupButton(ButtonType.OK);
         robot.clickOn(okButton1);
     }
+
     @Test
     public void update(FxRobot robot){
         robot.clickOn("Medicine");
@@ -103,20 +93,17 @@ class FieldOfStudyTableControllerTest {
         robot.clickOn("#update");
         robot.press(KeyCode.ALT).press(KeyCode.F4).release(KeyCode.F4).release(KeyCode.ALT);
     }
+
     @Test
     public void update1(FxRobot robot){
-        // Čekamo da dijalog postane vidljiv
         robot.lookup("#textField1").tryQuery().isPresent();
-
-        // Postoji li fieldNaziv
         robot.clickOn("#textField1");
-
-        // Klik na dugme Ok
         robot.clickOn("#update");
         DialogPane dialogPane = robot.lookup(".dialog-pane").queryAs(DialogPane.class);
         Button okButton1 = (Button) dialogPane.lookupButton(ButtonType.OK);
         robot.clickOn(okButton1);
     }
+
     @Test
     public void update2(FxRobot robot){
         robot.clickOn("Medicine");
@@ -130,18 +117,11 @@ class FieldOfStudyTableControllerTest {
 
     @Test
     public void delete(FxRobot robot){
-        // Čekamo da dijalog postane vidljiv
         robot.lookup("#textField1").tryQuery().isPresent();
-
-        // Postoji li fieldNaziv
         robot.clickOn("#textField1");
-
-        // Klik na dugme Ok
         robot.clickOn("#deleteFF");
         DialogPane dialogPane = robot.lookup(".dialog-pane").queryAs(DialogPane.class);
         Button okButton1 = (Button) dialogPane.lookupButton(ButtonType.OK);
         robot.clickOn(okButton1);
     }
-
-
 }

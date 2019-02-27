@@ -12,7 +12,6 @@ class FieldAndPublicationTest {
         field.setTitle("Test");
         assertEquals(649, field.getId());
         assertEquals("Test",field.getTitle());
-
     }
 
     @Test
@@ -22,7 +21,6 @@ class FieldAndPublicationTest {
         field.setType("Test");
         assertEquals(649, field.getId());
         assertEquals("Test",field.getType());
-
     }
 
     @Test
@@ -46,9 +44,8 @@ class FieldAndPublicationTest {
         assertEquals("HEHE",field.getPublicationType().getType());
         assertEquals(1998, field.getYearOfIssue());
         assertEquals("Elma",field.getTitle());
-
-
     }
+
     @Test
     void getScien1() {
         ScientificWork field=new ScientificWork(649,"Elma","testic",new FieldOfStudy(1435, "hehehhe"),"Testic2",new PublicationType(1234, "HEHE"),1998,55,"Afi");
@@ -62,5 +59,4 @@ class FieldAndPublicationTest {
         assertEquals(1998, field.getYearOfIssue());
         assertEquals("Elma",field.getTitle());
     }
-
 }

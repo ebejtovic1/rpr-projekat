@@ -37,55 +37,34 @@ class PublicationTypeTableControllerTest {
 
     @Test
     public void testAdd(FxRobot robot) {
-
-        // Čekamo da dijalog postane vidljiv
         robot.lookup("#textField1").tryQuery().isPresent();
-
-        // Postoji li fieldNaziv
         robot.clickOn("#textField1");
         robot.write("Testtesttest");
-
-        // Klik na dugme Ok
         robot.clickOn("#addTT");
         robot.press(KeyCode.ALT).press(KeyCode.F4).release(KeyCode.F4).release(KeyCode.ALT);
-
         robot.clickOn("Testtesttest");
         robot.clickOn("#delete");
         robot.lookup(".dialog-pane").tryQuery().isPresent();
-        // Klik na dugme Ok
         DialogPane dialogPane = robot.lookup(".dialog-pane").queryAs(DialogPane.class);
         Button okButton1 = (Button) dialogPane.lookupButton(ButtonType.OK);
         robot.clickOn(okButton1);
-
     }
 
     @Test
     public void testAdd1(FxRobot robot) {
-
-        // Čekamo da dijalog postane vidljiv
         robot.lookup("#textField1").tryQuery().isPresent();
-
-        // Postoji li fieldNaziv
         robot.clickOn("#textField1");
         robot.write("...");
-
-        // Klik na dugme Ok
         robot.clickOn("#addTT");
         DialogPane dialogPane = robot.lookup(".dialog-pane").queryAs(DialogPane.class);
         Button okButton1 = (Button) dialogPane.lookupButton(ButtonType.OK);
         robot.clickOn(okButton1);
-
     }
+
     @Test
     public void testAdd2(FxRobot robot) {
-
-        // Čekamo da dijalog postane vidljiv
         robot.lookup("#textField1").tryQuery().isPresent();
-
-        // Postoji li fieldNaziv
         robot.clickOn("#textField1");
-
-        // Klik na dugme Ok
         robot.clickOn("#addTT");
         DialogPane dialogPane = robot.lookup(".dialog-pane").queryAs(DialogPane.class);
         Button okButton1 = (Button) dialogPane.lookupButton(ButtonType.OK);
@@ -94,20 +73,11 @@ class PublicationTypeTableControllerTest {
 
     @Test
     public void testUpdate2(FxRobot robot) {
-
-
-        // Čekamo da dijalog postane vidljiv
         robot.lookup("#textField1").tryQuery().isPresent();
-
-
-        // Postoji li fieldNaziv
         robot.clickOn("#textField1");
         robot.write("Testtesttest");
-
-        // Klik na dugme Ok
         robot.clickOn("#addTT");
         robot.press(KeyCode.ALT).press(KeyCode.F4).release(KeyCode.F4).release(KeyCode.ALT);
-
         robot.clickOn("Testtesttest");
         robot.clickOn("#textField2");
         robot.write("heh");
@@ -117,25 +87,18 @@ class PublicationTypeTableControllerTest {
         robot.clickOn("Testtesttestheh");
         robot.clickOn("#delete");
         robot.lookup(".dialog-pane").tryQuery().isPresent();
-        // Klik na dugme Ok
         DialogPane dialogPane = robot.lookup(".dialog-pane").queryAs(DialogPane.class);
         Button okButton1 = (Button) dialogPane.lookupButton(ButtonType.OK);
         robot.clickOn(okButton1);
     }
+
     @Test
     public void testUpdate1(FxRobot robot) {
-
-        // Čekamo da dijalog postane vidljiv
         robot.lookup("#textField1").tryQuery().isPresent();
-
-        // Postoji li fieldNaziv
         robot.clickOn("#textField1");
         robot.write("Testtesttest");
-
-        // Klik na dugme Ok
         robot.clickOn("#addTT");
         robot.press(KeyCode.ALT).press(KeyCode.F4).release(KeyCode.F4).release(KeyCode.ALT);
-
         robot.clickOn("Testtesttest");
         robot.clickOn("#textField2");
         robot.press(KeyCode.CONTROL).press(KeyCode.A).release(KeyCode.A).release(KeyCode.CONTROL);
@@ -146,25 +109,23 @@ class PublicationTypeTableControllerTest {
         robot.clickOn(okButton);
         ScientificWorksDAO dao=ScientificWorksDAO.getInstance();
         dao.deletePT(dao.getIdType("Testtesttest"));
-
     }
+
     @Test
     public void testUpdate(FxRobot robot) {
-
         robot.clickOn("#update");
         DialogPane dialogPane = robot.lookup(".dialog-pane").queryAs(DialogPane.class);
         assertEquals("No selected item",dialogPane.getContentText());
         Button okButton = (Button) dialogPane.lookupButton(ButtonType.OK);
         robot.clickOn(okButton);
     }
+
     @Test
     public void delete(FxRobot robot) {
-
         robot.clickOn("#delete");
         DialogPane dialogPane = robot.lookup(".dialog-pane").queryAs(DialogPane.class);
         assertEquals("No selected item",dialogPane.getContentText());
         Button okButton = (Button) dialogPane.lookupButton(ButtonType.OK);
         robot.clickOn(okButton);
     }
-
 }

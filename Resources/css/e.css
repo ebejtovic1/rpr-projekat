@@ -1,0 +1,32 @@
+#hbox{
+    -fx-border-color: lightgrey;
+    -fx-border-width: 0.5;
+    -fx-border-radius: 5;
+}
+#hbox1{
+
+    -fx-border-color: lightgrey;
+    -fx-border-width: 0.5;
+    -fx-border-radius: 5;
+}
+#hbox2{
+    -fx-border-color: lightgrey;
+    -fx-border-width: 0.5;
+    -fx-border-radius: 5;
+}
+
+#grid{
+-fx-background-color: #404144;
+}
+
+.poljeIspravno {
+    -fx-background-color: white;
+}
+
+.poljeNijeIspravno {
+    -fx-background-color: lightpink;
+}
+
+.poljeNeutralno {
+    -fx-background-color: white;
+}

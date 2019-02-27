@@ -76,7 +76,7 @@
             </Menu>
           <Menu text="_Help">
             <items>
-              <MenuItem text="A_bout" />
+              <MenuItem onAction="#about" text="A_bout" />
             </items>
           </Menu>
         </menus>

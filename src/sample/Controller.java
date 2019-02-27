@@ -596,6 +596,20 @@ public class Controller {
             }
         });
     }
+
+    public void about(ActionEvent actionEvent){
+        FXMLLoader loader1 = new FXMLLoader(getClass().getResource("About.fxml"));
+        Stage stage = new Stage(StageStyle.DECORATED);
+        try { stage.setScene(new Scene((Pane) loader1.load())
+        );
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        stage.setTitle("Informations");
+        stage.setResizable(false);
+        stage.show();
+    }
+
     public void modifyF(ActionEvent actionEvent){
         FXMLLoader loader1 = new FXMLLoader(getClass().getResource("FieldOfStudyTable.fxml"));
         Stage stage = new Stage(StageStyle.DECORATED);

@@ -66,6 +66,9 @@
             <items>
                   <MenuItem onAction="#modifyF" text="Modify Fiel_d of study table" />
                   <MenuItem onAction="#modifyT" text="Modify Publi_cation type table" />
+                  <MenuItem mnemonicParsing="false" onAction="#addS" text="Add scientific work" />
+                  <MenuItem mnemonicParsing="false" onAction="#delete" text="Delete scientific work" />
+                  <MenuItem mnemonicParsing="false" onAction="#update" text="Update scientific work" />
             </items>
           </Menu>
             <Menu text="_View">

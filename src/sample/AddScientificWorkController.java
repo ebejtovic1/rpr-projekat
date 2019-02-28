@@ -122,9 +122,10 @@ public class AddScientificWorkController {
         return (s.length()>5);
     }
     boolean validationAuthor(String s){
-        return (s.matches("^[a-zA-Z_ \\,]+$") && s.length()>5);
+        return (s.matches("^[a-zA-Z_ \\,\\.]+$") && s.length()>5);
     }
     boolean validationJournal(String s){
+        if(s==null)return true;
         return (s.matches("^[a-zA-Z_ \\&]+$") || s.length()==0);
     }
 
